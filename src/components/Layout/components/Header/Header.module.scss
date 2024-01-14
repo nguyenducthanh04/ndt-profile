@@ -1,0 +1,136 @@
+.wrapper {
+  width: 100%;
+  height: 64px;
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  display: flex;
+  justify-content: center;
+  //   background-color: #000a00b2;
+  background-color: black;
+  // position: fixed;
+  // z-index: 9999;
+}
+.wrapper {
+  &.light-mode {
+    background-color: #fff;
+    color: #000;
+  }
+  &.dark-mode {
+    background-color: #000;
+    color: #fff;
+  }
+}
+.language {
+  &.light-mode {
+    color: #000;
+  }
+  &.dark-mode {
+    color: #fff;
+  }
+}
+
+.inner {
+  height: 100%;
+  width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inner-item {
+  padding: 20px 0;
+}
+.inner-item-right {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+.inner-item-li {
+  list-style: none;
+  display: flex;
+}
+.menu-mobile-btn {
+  // display: none;
+}
+.menu-icon {
+  font-size: 2.2rem;
+}
+.menu-items {
+  color: #000;
+}
+.inner-item-li-right {
+  list-style: none;
+}
+.inner-item-li_link {
+  text-decoration: none;
+  margin-left: 14px;
+  // display: block;
+}
+.inner-name {
+  font-size: 2.1rem;
+  line-height: 1.75rem;
+  color: #14b8a6;
+  font-weight: 500;
+}
+.inner-name-chat {
+  font-size: 2.1rem;
+  line-height: 1.75rem;
+  color: var(--success);
+  font-weight: 500;
+}
+.logo-f8 {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+.icon {
+  color: #686666;
+  font-size: 2.2rem;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+.language {
+  margin-left: 14px;
+  width: 70px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  background-color: #3f3f46;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+.router-link {
+  text-decoration: none;
+  color: #14b8a6;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+//Responsive
+
+@media (max-width: 740px) {
+  .logo-f8 {
+    display: none;
+  }
+  .avatar {
+    display: none;
+  }
+  .inner-item-li {
+    // display: block;
+    display: none;
+  }
+  .menu-mobile-btn {
+    display: block;
+    margin-top: -38px;
+    padding: 0px 16px;
+  }
+}
