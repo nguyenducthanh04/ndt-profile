@@ -58,12 +58,12 @@ function Home() {
               <ul className={cx("list-history")}>
                 <li className={cx("history-item")}>
                   <span className={cx("history-content")}>
-                    2016: Học tại THCS Phụng Công
+                    2016: Học tại THCS Phụng Công, Văn Giang, Hưng Yên
                   </span>
                 </li>
                 <li className={cx("history-item")}>
                   <span className={cx("history-content")}>
-                    2019: Học tại THPT Nguyễn Công Hoan
+                    2019: Học tại THPT Nguyễn Công Hoan, Văn Giang, Hưng Yên
                   </span>
                 </li>
                 <li className={cx("history-item")}>

@@ -1,3 +1,21 @@
 .content {
-  width: 200px;
+  width: 365px;
+}
+.router-link {
+  text-decoration: none;
+  color: #14b8a6;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.router-link-name {
+  text-decoration: none;
+  color: var(--success);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.menu-poper-item {
+  list-style: none;
+}
+.menu-popper {
+  padding: 8px;
 }

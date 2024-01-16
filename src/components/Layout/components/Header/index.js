@@ -1,32 +1,20 @@
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
-import Tippy from "@tippyjs/react/headless";
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Header.module.scss";
 import { faGithub, faSquareFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import ImageAvatar from "~/assets/images/thanhdz.jpg";
 import { useDarkMode } from "~/DarkModeContext";
-import { wrapper as PopperWrapper } from "~/components/Popper";
+import Menu from "~/components/Popper/Menu";
 const cx = classNames.bind(styles);
-function Header({ onToggleDarkMode }) {
-  // const [darkMode, setDarkMode] = useState(false);
-  // const toggleDarkMode = () => {
-  //   setDarkMode(!darkMode);
-  // };
-  // const headerClasses = cx("wrapper", {
-  //   "light-mode": !darkMode,
-  //   "dark-mode": darkMode,
-  // });
-  // const { darkMode, toggleDarkMode } = useDarkMode();
+function Header() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   const headerClasses = cx("wrapper", {
     "light-mode": !isDarkMode,
     "dark-mode": isDarkMode,
   });
-  const [menuItem, setMenuItem] = useState([]);
   return (
     <header className={headerClasses}>
       <div className={cx("inner")}>
@@ -62,32 +50,11 @@ function Header({ onToggleDarkMode }) {
               </a>
             </li>
           </ul>
-          <Tippy
-            // visible
-            interactive
-            render={(attrs) => (
-              <div className={cx("menu-items")} tabIndex="-1" {...attrs}>
-                <PopperWrapper>
-                  <ul>
-                    <li>
-                      <Link to="/" className={cx("router-link")}>
-                        Nguyễn Đức Thanh
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/blog" className={cx("router-link")}>
-                        Blogs
-                      </Link>
-                    </li>
-                  </ul>
-                </PopperWrapper>
-              </div>
-            )}
-          >
+          <Menu>
             <div className={cx("menu-mobile-btn")}>
               <FontAwesomeIcon className={cx("menu-icon")} icon={faBars} />
             </div>
-          </Tippy>
+          </Menu>
         </div>
         <div className={cx("inner-right")}>
           <ul className={cx("inner-item-right")}>
@@ -137,7 +104,6 @@ function Header({ onToggleDarkMode }) {
             </li>
             <li className={cx("inner-item-li-right")}>
               <a className={cx("inner-item-li_link")} href="">
-                {/* <FontAwesomeIcon className={cx("icon")} icon={faUser} /> */}
                 <img className={cx("avatar")} src={ImageAvatar}></img>
               </a>
             </li>
