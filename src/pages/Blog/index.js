@@ -23,13 +23,14 @@ function Blog() {
       .then((response) => {
         // Lấy dữ liệu từ phản hồi và cập nhật state
         setPosts(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         // Xử lý lỗi nếu có
         console.error("Error fetching data:", error);
       });
   }, []); // [] giúp useEffect chỉ chạy một lần khi component được render
-  console.log(posts);
+  // console.log(posts);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("container")}>
@@ -52,7 +53,7 @@ function Blog() {
             <div className={cx("blog-content-top")}>
               <Link className={cx("blog-content-top-item")} to="/">
                 <img className={cx("img-post")} src={ImagePost}></img>
-                <h2 className={cx("blog-title")}>
+                <h2 className={cx("blog-title")} key={post.id}>
                   {/* Xin chào các bạn, mình là Thanh */}
                   {post.title}
                 </h2>
