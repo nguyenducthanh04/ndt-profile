@@ -10,13 +10,13 @@
   // z-index: 9999;
 }
 .wrapper {
-  &.light-mode {
-    background-color: #fff;
-    color: #000;
-  }
   &.dark-mode {
     background-color: #000;
     color: #fff;
+  }
+  &.light-mode {
+    background-color: #fff;
+    color: #000;
   }
 }
 .language {

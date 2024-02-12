@@ -12,8 +12,8 @@ function Header() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   const headerClasses = cx("wrapper", {
-    "light-mode": !isDarkMode,
     "dark-mode": isDarkMode,
+    "light-mode": !isDarkMode,
   });
   return (
     <header className={headerClasses}>
