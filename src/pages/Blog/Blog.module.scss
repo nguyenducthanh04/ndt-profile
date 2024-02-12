@@ -96,3 +96,25 @@
   margin-left: 4px;
   color: var(--white);
 }
+.pagination {
+  margin: 12px 0px;
+  text-align: center;
+}
+
+@media (max-width: 740px) {
+  .search {
+    width: 240px;
+  }
+  .blog-content {
+    display: flex;
+    // text-align: center;
+  }
+  .blog-content-item {
+    width: 90%;
+    margin-bottom: 0;
+  }
+  .pagination {
+    margin: 12px 0px;
+    text-align: center;
+  }
+}
