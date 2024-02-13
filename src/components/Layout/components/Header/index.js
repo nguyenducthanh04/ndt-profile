@@ -43,7 +43,11 @@ function Header() {
                 </p>
               </a>
               <a className={cx("inner-item-li_link")} href="">
-                <p className={cx("inner-name")}>Profile</p>
+                <p className={cx("inner-name")}>
+                  <Link to="/profile" className={cx("router-link")}>
+                    Profile
+                  </Link>
+                </p>
               </a>
               <a className={cx("inner-item-li_link")} href="">
                 <p className={cx("inner-name-chat")}>Chat</p>
