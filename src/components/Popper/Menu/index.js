@@ -29,12 +29,12 @@ function Menu({ children }) {
                 </Link>
               </li>
               <li className={cx("menu-poper-item")}>
-                <Link to="/" className={cx("router-link")}>
+                <Link to="/profile" className={cx("router-link")}>
                   Profile
                 </Link>
               </li>
               <li className={cx("menu-poper-item")}>
-                <Link to="/blog" className={cx("router-link-name")}>
+                <Link to="/chat" className={cx("router-link-name")}>
                   Chat
                 </Link>
               </li>
