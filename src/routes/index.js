@@ -8,7 +8,7 @@ const publicRoutes = [
   { path: "/blog", component: Blog },
   { path: "/contact", component: Contact },
   { path: "/profile", component: Profile },
-  { path: "/blog-detail", component: BlogDetail },
+  { path: "/blog-detail/:id", component: BlogDetail },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };
