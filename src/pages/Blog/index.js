@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import styles from "./Blog.module.scss";
 import { faEye, faSearch } from "@fortawesome/free-solid-svg-icons";
 import ImagePost from "~/assets/images/thanhdz.jpg";
+
 const cx = classNames.bind(styles);
 
 function Blog() {
