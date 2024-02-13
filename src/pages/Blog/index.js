@@ -52,79 +52,149 @@ function Blog() {
         <div className={cx("blog-content-item")}>
           <div className={cx("blog-content-top")}>
             <Link className={cx("blog-content-top-item")} to="/">
-              <img className={cx("img-post")} src={ImagePost}></img>
               <h2 className={cx("blog-title")}>
                 Xin chào các bạn, mình là Thanh
                 {/* {post.title} */}
               </h2>
+              <img className={cx("img-post")} src={ImagePost}></img>
             </Link>
           </div>
-          {/* <div className={cx("content")}>
+          <div className={cx("content")}>
             <p className={cx("content-list")}>
-              {post.body}
+              Mình sinh năm 2004, mình hiện là một dev FE, mình đẹp trai, thật
+              ra mấy cái này mọi người xem ở trang chủ có rồi mà
             </p>
-          </div> */}
+          </div>
           <div className={cx("footer-blog")}>
-            <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
-            <p className={cx("seen")}>
-              100
-              <FontAwesomeIcon
-                className={cx("icon-seen")}
-                icon={faEye}
-              ></FontAwesomeIcon>
-            </p>
+            <ul className={cx("footer-info-ul")}>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>02/13/2024</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("seen")}>
+                  100
+                  <FontAwesomeIcon
+                    className={cx("icon-seen")}
+                    icon={faEye}
+                  ></FontAwesomeIcon>
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
         <div className={cx("blog-content-item")}>
           <div className={cx("blog-content-top")}>
             <Link className={cx("blog-content-top-item")} to="/">
-              <img className={cx("img-post")} src={ImagePost}></img>
               <h2 className={cx("blog-title")}>
                 Xin chào các bạn, mình là Thanh
                 {/* {post.title} */}
               </h2>
+              <img className={cx("img-post")} src={ImagePost}></img>
             </Link>
           </div>
-          {/* <div className={cx("content")}>
+          <div className={cx("content")}>
             <p className={cx("content-list")}>
-              {post.body}
+              Mình sinh năm 2004, mình hiện là một dev FE, mình đẹp trai, thật
+              ra mấy cái này mọi người xem ở trang chủ có rồi mà
             </p>
-          </div> */}
+          </div>
           <div className={cx("footer-blog")}>
-            <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
-            <p className={cx("seen")}>
-              100
-              <FontAwesomeIcon
-                className={cx("icon-seen")}
-                icon={faEye}
-              ></FontAwesomeIcon>
-            </p>
+            <ul className={cx("footer-info-ul")}>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>02/13/2024</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("seen")}>
+                  100
+                  <FontAwesomeIcon
+                    className={cx("icon-seen")}
+                    icon={faEye}
+                  ></FontAwesomeIcon>
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
         <div className={cx("blog-content-item")}>
           <div className={cx("blog-content-top")}>
             <Link className={cx("blog-content-top-item")} to="/">
-              <img className={cx("img-post")} src={ImagePost}></img>
               <h2 className={cx("blog-title")}>
                 Xin chào các bạn, mình là Thanh
                 {/* {post.title} */}
               </h2>
+              <img className={cx("img-post")} src={ImagePost}></img>
             </Link>
           </div>
-          {/* <div className={cx("content")}>
+          <div className={cx("content")}>
             <p className={cx("content-list")}>
-              {post.body}
+              Mình sinh năm 2004, mình hiện là một dev FE, mình đẹp trai, thật
+              ra mấy cái này mọi người xem ở trang chủ có rồi mà
             </p>
-          </div> */}
+          </div>
           <div className={cx("footer-blog")}>
-            <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
-            <p className={cx("seen")}>
-              100
-              <FontAwesomeIcon
-                className={cx("icon-seen")}
-                icon={faEye}
-              ></FontAwesomeIcon>
+            {/* <div className={cx("footer-info")}> */}
+            <ul className={cx("footer-info-ul")}>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>02/13/2024</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("seen")}>
+                  100
+                  <FontAwesomeIcon
+                    className={cx("icon-seen")}
+                    icon={faEye}
+                  ></FontAwesomeIcon>
+                </p>
+              </li>
+            </ul>
+            {/* </div> */}
+          </div>
+        </div>
+        <div className={cx("blog-content-item")}>
+          <div className={cx("blog-content-top")}>
+            <Link className={cx("blog-content-top-item")} to="/">
+              <h2 className={cx("blog-title")}>
+                Xin chào các bạn, mình là Thanh
+                {/* {post.title} */}
+              </h2>
+              <img className={cx("img-post")} src={ImagePost}></img>
+            </Link>
+          </div>
+          <div className={cx("content")}>
+            <p className={cx("content-list")}>
+              Mình sinh năm 2004, mình hiện là một dev FE, mình đẹp trai, thật
+              ra mấy cái này mọi người xem ở trang chủ có rồi mà
             </p>
+          </div>
+          <div className={cx("footer-blog")}>
+            {/* <div className={cx("footer-info")}> */}
+            <ul className={cx("footer-info-ul")}>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>02/13/2024</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("footer-blog-content")}>Khoảng 4 phút đọc</p>
+              </li>
+              <li className={cx("footer-info-li")}>
+                <p className={cx("seen")}>
+                  100
+                  <FontAwesomeIcon
+                    className={cx("icon-seen")}
+                    icon={faEye}
+                  ></FontAwesomeIcon>
+                </p>
+              </li>
+            </ul>
+            {/* </div> */}
           </div>
         </div>
         {/* ))} */}
