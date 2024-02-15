@@ -24,7 +24,7 @@ function UserComponent() {
       const response = await axios.post("http://localhost:3000/auth/logout");
       console.log(response.data); // Logged out successfully
       // Chuyển hướng đến trang đăng nhập hoặc trang chính của ứng dụng sau khi đăng xuất thành công
-      window.location.href = "http://127.0.0.1:3001/google"; // Đổi đường dẫn tùy thuộc vào đường dẫn của trang đăng nhập của bạn
+      window.location.href = "http://127.0.0.1:3001/auth/login"; // Đổi đường dẫn tùy thuộc vào đường dẫn của trang đăng nhập của bạn
     } catch (error) {
       console.error("Error during logout:", error);
     }
