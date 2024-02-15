@@ -76,6 +76,23 @@ function Profile() {
           </div>
           <hr className={cx("hr-comment")}></hr>
         </div>
+        <div className={cx("users-comment-parent")}>
+          <div className={cx("user-comment")}>
+            <div className={cx("avt-user")}>
+              <img className={cx("avatar")} src={Avatar} alt="Avatar"></img>
+            </div>
+            <div className={cx("profile-user")}>
+              <h5 className={cx("name-user")}>Nguyen Duc Thanh</h5>
+              <p className={cx("date")}>12 ngày trước</p>
+            </div>
+          </div>
+          <div className={cx("content-comment")}>
+            <a href="" className={cx("comment-detail")}>
+              <em className={cx("content")}>Tớ cảm ơn cậu !</em>
+            </a>
+          </div>
+          <hr className={cx("hr-comment")}></hr>
+        </div>
       </div>
     </div>
   );
