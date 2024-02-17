@@ -15,6 +15,10 @@ function Header() {
     "dark-mode": isDarkMode,
     "light-mode": !isDarkMode,
   });
+  const userData = localStorage.getItem("userData");
+  // console.log("user:", userData);
+  // const user = JSON.parse(userData);
+  // console.log(user.name);
   return (
     <header className={headerClasses}>
       <div className={cx("inner")}>

@@ -4,14 +4,17 @@ import App from "~/App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "~/components/GlobalStyles";
 import { DarkModeProvider } from "./DarkModeContext";
+import { AuthProvider } from "./AuthContext/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <DarkModeProvider>
-      <GlobalStyles>
-        <App />
-      </GlobalStyles>
+      <AuthProvider>
+        <GlobalStyles>
+          <App />
+        </GlobalStyles>
+      </AuthProvider>
     </DarkModeProvider>
   </React.StrictMode>
 );

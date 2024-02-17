@@ -4,6 +4,7 @@ import axios from "axios";
 function UserComponent() {
   const location = useLocation();
   const [userData, setUserData] = useState(null);
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     // Lấy thông tin người dùng từ query parameters
@@ -15,12 +16,17 @@ function UserComponent() {
 
       // Các thông tin khác nếu có
     };
-
+    const tokenFromParams = searchParams.get("token");
     // Cập nhật state với thông tin người dùng
+    if (tokenFromParams) {
+      localStorage.setItem("token", tokenFromParams);
+    }
     setUserData(userDataFromParams);
+    setToken(tokenFromParams);
   }, [location.search]);
   const handleLogout = async () => {
     try {
+      localStorage.removeItem("token");
       const response = await axios.post("http://localhost:3000/auth/logout");
       console.log(response.data); // Logged out successfully
       // Chuyển hướng đến trang đăng nhập hoặc trang chính của ứng dụng sau khi đăng xuất thành công
@@ -37,6 +43,7 @@ function UserComponent() {
           <p>ID: {userData.id}</p>
           <p>Name: {userData.name}</p>
           <p>Email: {userData.email}</p>
+          <p>Token: {token}</p>
           {/* Các thông tin khác */}
           <button onClick={handleLogout}>Logout</button>
         </div>

@@ -16,7 +16,7 @@ function Blog() {
   useEffect(() => {
     // Hàm này sẽ được gọi khi component được render lần đầu tiên
     // Bạn có thể thay đổi URL của API theo địa chỉ thực tế của bạn
-    const apiUrl = "https://6575d1ce0febac18d4035278.mockapi.io/posts";
+    const apiUrl = "http://127.0.0.1:3000/posts/api/posts";
 
     // Sử dụng Axios để gọi API
     axios
@@ -59,7 +59,10 @@ function Blog() {
                   {/* Xin chào các bạn, mình là Thanh */}
                   {post.title}
                 </h2>
-                <img className={cx("img-post")} src={ImagePost}></img>
+                <img
+                  className={cx("img-post")}
+                  src={`http://127.0.0.1:3000/${post.filePath}`}
+                ></img>
               </Link>
             </div>
             <div className={cx("content")}>

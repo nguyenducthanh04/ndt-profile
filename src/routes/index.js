@@ -5,7 +5,6 @@ import Profile from "~/pages/Profile";
 import BlogDetail from "~/pages/BlogDetail";
 import AuthLogin from "~/pages/AuthLogin/Auth";
 import User from "~/pages/users";
-
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/blog", component: Blog },
