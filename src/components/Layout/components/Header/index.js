@@ -111,7 +111,7 @@ function Header() {
               </button>
             </li>
             <li className={cx("inner-item-li-right")}>
-              <a className={cx("inner-item-li_link")} href="">
+              <a className={cx("inner-item-li_link")} href="/profile">
                 <img className={cx("avatar")} src={ImageAvatar}></img>
               </a>
             </li>
