@@ -1,27 +1,16 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  // &.light-mode {
-  //   background-color: #fff;
-  //   color: #000;
-  // }
-  // &.dark-mode {
-  //   background-color: #000;
-  //   color: #fff;
-  // }
+    display: flex;
+    flex-direction: column;
 }
 .container {
-  width: 1280px;
-  min-height: auto; //1100px
-  // background-color: #e4e4e7;
-  background-color: #353333;
-  // opacity: 0.3;
-  border-radius: 10px;
+    width: 100%;
+    min-height: auto; //1100px
+    background: rgb(10, 10, 10);
+    border-radius: 10px;
 }
 
 @media (max-width: 740px) {
-  .container {
-    width: 375px;
-  }
+    .container {
+        width: 375px;
+    }
 }

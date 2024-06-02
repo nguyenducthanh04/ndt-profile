@@ -1,18 +1,20 @@
 import Home from "~/pages/Home";
-import Blog from "~/pages/Blog";
-import Contact from "~/pages/Contact";
-import Profile from "~/pages/Profile";
-import BlogDetail from "~/pages/BlogDetail";
-import AuthLogin from "~/pages/AuthLogin/Auth";
-import User from "~/pages/users";
+import Detail from "~/pages/Detail";
+import WatchMovie from "~/pages/WatchMovie";
+import MovieOdd from "~/pages/MovieOdd";
+import Movies from "~/pages/Movies";
+import Anime from "~/pages/Anime";
+import Search from "~/pages/Search";
+import Tvshow from "~/pages/Tvshow";
 const publicRoutes = [
-  { path: "/", component: Home },
-  { path: "/blog", component: Blog },
-  { path: "/contact", component: Contact },
-  { path: "/profile", component: Profile },
-  { path: "/blog-detail/:id", component: BlogDetail },
-  { path: "/auth/login", component: AuthLogin },
-  { path: "/user", component: User },
+    { path: "/", component: Home },
+    { path: "/detail/:slug", component: Detail },
+    { path: "/watch-movie/:slug", component: WatchMovie },
+    { path: "/phim-le", component: MovieOdd },
+    { path: "/phim-bo", component: Movies },
+    { path: "/hoat-hinh", component: Anime },
+    { path: "/search", component: Search },
+    { path: "/tv-shows", component: Tvshow },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };

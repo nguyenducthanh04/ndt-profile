@@ -1,0 +1,36 @@
+.wrapper {
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+.name-movie {
+    margin-bottom: 40px;
+    margin-left: 20px;
+}
+.name-movie h3 {
+    font-size: 2rem;
+}
+.list-episodes {
+    margin-left: 20px;
+}
+.list-episodes button {
+    width: 90px;
+    height: 40px;
+    background-color: #ffbe0b;
+    border-radius: 6px;
+    margin-left: 8px;
+    margin-top: 22px;
+}
+.selectedButton {
+    color: red;
+}
+@media (width: 428px) {
+    .name-movie {
+        margin-bottom: 20px;
+        margin-left: 28px;
+    }
+    .content {
+        margin-left: 49px;
+    }
+}

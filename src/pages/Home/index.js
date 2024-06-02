@@ -1,186 +1,242 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
-import ImgAvatar from "~/assets/images/thanhdz.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaCheckCircle, FaTheRedYeti } from "react-icons/fa";
+import "react-slideshow-image/dist/styles.css";
+import Carousel from "react-bootstrap/Carousel";
+
 const cx = classNames.bind(styles);
 function Home() {
-  // const ImageHover = () => {
-  const [isHoverd, setIsHoverd] = useState(false);
-  const handleMouse = () => {
-    setIsHoverd(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHoverd(false);
-  };
-  // };
-  return (
-    <div className={cx("wrapper")}>
-      <div className={cx("title-content")}>
-        <h1 className={cx("title-name")}>Nguyễn Đức Thanh</h1>
-        <p className={cx("introduce")}>
-          Bắt đầu học lập trình từ năm 18 tuổi, năm 19 tuổi học lập trình web
-          Back-end
-        </p>
-      </div>
-      <div className={cx("container-avt")}>
-        <div className={cx("avt-thanh")}>
-          <div className={cx("form-avt")}>
-            <img
-              className={cx("img-avt")}
-              src={ImgAvatar}
-              onMouseEnter={handleMouse}
-              onMouseLeave={handleMouseLeave}
-            ></img>
-            <figcaption className={cx("job")}>Back-end Developer</figcaption>
-          </div>
-          <div className={cx("skills")}>
-            <section className={cx("my-skill")}>
-              <h2 className={cx("skill-title")}>Các kĩ năng của tôi</h2>
-              <ul className={cx("list-skill")}>
-                <li className={cx("skill-item")}>
-                  <span className={cx("skill-content")}>
-                    Kĩ năng web: Nodejs, Expressjs, HTML5, CSS, SCSS
-                  </span>
-                </li>
-                <li className={cx("skill-item")}>
-                  <span className={cx("skill-content")}>
-                    Các kĩ năng khác: Kĩ năng tìm kiếm thông tin và nghiên cứu ở
-                    mức ổn, kĩ năng làm việc nhóm tốt
-                  </span>
-                </li>
-              </ul>
-            </section>
-          </div>
-          <div className={cx("histories")}>
-            <section className={cx("my-history")}>
-              <h2 className={cx("history-title")}>Lịch sử</h2>
-              <ul className={cx("list-history")}>
-                <li className={cx("history-item")}>
-                  <span className={cx("history-content")}>
-                    2016: Học tại THCS Phụng Công, Văn Giang, Hưng Yên
-                  </span>
-                </li>
-                <li className={cx("history-item")}>
-                  <span className={cx("history-content")}>
-                    2019: Học tại THPT Nguyễn Công Hoan, Văn Giang, Hưng Yên
-                  </span>
-                </li>
-                <li className={cx("history-item")}>
-                  <span className={cx("history-content")}>
-                    2022 - nay: Học tập và làm việc tại Hà Nội
-                  </span>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </div>
-        <div className={cx("content-container")}>
-          <section className={cx("content-container-child")}>
-            <div className={cx("section-child")}>
-              <div className={cx("section-child-header")}>
-                <h2 className={cx("section-child-title")}>Các dự án cá nhân</h2>
-              </div>
-              <div className={cx("project")}>
-                <span className={cx("project-title")}>
-                  Project Manager Class
-                </span>
-                <p className={cx("project-content")}>
-                  Một dự án đang được thực hiện<br></br>
-                  Một trang web quản lý lớp học, sử dụng Nodejs
-                </p>
-                <div className={cx("project-address")}>
-                  <a className={cx("project-address-link")} href="">
-                    Demo
-                  </a>
-                  <a
-                    className={cx("project-address-link")}
-                    href="https://github.com/nguyenducthanh04/Project-Thanh-Backend-k1"
-                    target="_blank"
-                  >
-                    Code
-                  </a>
+    const [movieOdd, setMovieOdd] = useState([]);
+    const [anime, setAnime] = useState([]);
+    const [movies, setMovies] = useState([]);
+    const [banner, setBanner] = useState([]);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        // Hàm fetch dữ liệu từ API
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/v1/api/danh-sach/phim-le"
+                ); // Thay thế bằng URL API thực tế
+                const result = await response.json();
+                setMovieOdd(result.data.items); // Truy cập mảng movieOdd từ phản hồi API
+                // console.log("kq:", result.data.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []); // Mảng dep
+    useEffect(() => {
+        // Hàm fetch dữ liệu từ API
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/v1/api/danh-sach/hoat-hinh"
+                ); // Thay thế bằng URL API thực tế
+                const result = await response.json();
+                setAnime(result.data.items);
+                // console.log("kq:", result.data.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []); // Mảng dep
+    useEffect(() => {
+        // Hàm fetch dữ liệu từ API
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/v1/api/danh-sach/phim-bo"
+                ); // Thay thế bằng URL API thực tế
+                const result = await response.json();
+                setMovies(result.data.items);
+                // console.log("kq:", result.data.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    useEffect(() => {
+        // Hàm fetch dữ liệu từ API
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/danh-sach/phim-moi-cap-nhat"
+                ); // Thay thế bằng URL API thực tế
+                const result = await response.json();
+                setBanner(result.items);
+                console.log("kq:", result.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []); // Mảng dep
+    useEffect(() => {
+        toast.success(
+            `Chào mừng đến với ThanhMovie ! Chúc bạn xem phim vui vẻ ^^`,
+            {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }
+        );
+    }, []); // Chỉ chạy một lần khi component được mount
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+    return (
+        <div className={cx("wrapper")}>
+            <Carousel data-bs-theme="dark">
+                {banner?.map((bn) => (
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={bn.poster_url}
+                            alt={bn.name}
+                        />
+                        <Carousel.Caption>
+                            <h5>First slide label</h5>
+                            <p>
+                                Nulla vitae elit libero, a pharetra augue mollis
+                                interdum.
+                            </p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                ))}
+
+                {/* <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src="https://img.phimapi.com/upload/vod/20240530-1/fd1ab7132570217d6087388c1660b91c.jpg"
+                        alt="Second slide"
+                    />
+                    <Carousel.Caption>
+                        <h5>Second slide label</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src="https://img.phimapi.com/upload/vod/20240530-1/fd1ab7132570217d6087388c1660b91c.jpg"
+                        alt="Third slide"
+                    />
+                    <Carousel.Caption>
+                        <h5>Third slide label</h5>
+                        <p>
+                            Praesent commodo cursus magna, vel scelerisque nisl
+                            consectetur.
+                        </p>
+                    </Carousel.Caption>
+                </Carousel.Item> */}
+            </Carousel>
+            <div className={cx("content-movie")}>
+                <div style={{ display: "flex", width: "1786px" }}>
+                    <h2>Phim lẻ</h2>
+                    <br></br>
                 </div>
-                <hr className={cx("project-hr")}></hr>
-              </div>
-              <div className={cx("project")}>
-                <span className={cx("project-title")}>
-                  Project Manager Class
-                </span>
-                <p className={cx("project-content")}>
-                  Một dự án đang được thực hiện<br></br>
-                  Một trang web quản lý lớp học, sử dụng Nodejs
-                </p>
-                <div className={cx("project-address")}>
-                  <a className={cx("project-address-link")} href="">
-                    Demo
-                  </a>
-                  <a
-                    className={cx("project-address-link")}
-                    href="https://github.com/nguyenducthanh04/Project-Thanh-Backend-k1"
-                    target="_blank"
-                  >
-                    Code
-                  </a>
+                <div className={cx("list-movie")}>
+                    {movieOdd.map((movie) => {
+                        return (
+                            <Link to={`/detail/${movie.slug}`}>
+                                <div
+                                    className={cx("product-item")}
+                                    key={movie._id}
+                                >
+                                    <img
+                                        className={cx("img-product")}
+                                        src={`https://img.phimapi.com/${movie.poster_url}`}
+                                        alt={movie.name}
+                                    />
+                                    <h3 className={cx("name-product")}>
+                                        {movie.name}
+                                    </h3>
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
-                <hr className={cx("project-hr")}></hr>
-              </div>
-              <div className={cx("project")}>
-                <span className={cx("project-title")}>
-                  Project Manager Class
-                </span>
-                <p className={cx("project-content")}>
-                  Một dự án đang được thực hiện<br></br>
-                  Một trang web quản lý lớp học, sử dụng Nodejs
-                </p>
-                <div className={cx("project-address")}>
-                  <a className={cx("project-address-link")} href="">
-                    Demo
-                  </a>
-                  <a
-                    className={cx("project-address-link")}
-                    href="https://github.com/nguyenducthanh04/Project-Thanh-Backend-k1"
-                    target="_blank"
-                  >
-                    Code
-                  </a>
-                </div>
-                {/* <hr className={cx("project-hr")}></hr> */}
-              </div>
             </div>
-          </section>
-          <section className={cx("infomation")}>
-            <div className={cx("info-title")}>
-              <h2 className={cx("info-title-child")}>Thông tin thêm</h2>
+            <div className={cx("content-movie")}>
+                <div style={{ display: "flex", width: "1786px" }}>
+                    <h2>Hoạt hình</h2>
+                    <br></br>
+                </div>
+                <div className={cx("list-movie")}>
+                    {anime.map((movie) => {
+                        return (
+                            <Link to={`/detail/${movie.slug}`}>
+                                <div
+                                    className={cx("product-item")}
+                                    key={movie._id}
+                                >
+                                    <img
+                                        className={cx("img-product")}
+                                        src={`https://img.phimapi.com/${movie.poster_url}`}
+                                        alt={movie.name}
+                                    />
+                                    <h3 className={cx("name-product")}>
+                                        {movie.name}
+                                    </h3>
+                                </div>
+                            </Link>
+                        );
+                    })}
+                </div>
             </div>
-            <ul className={cx("info-list")}>
-              <li className={cx("info-list-item")}>
-                <span className="info-list-item-child">
-                  Tôi thích nghe nhạc, xem phim và tìm hiểu thêm về các ngôn ngữ
-                  cũng như frame work, hiện tại tôi đang học thêm Reactjs, trang
-                  web này cũng được viết bằng một chút kiến thức React.
-                </span>
-              </li>
-              <li className={cx("info-list-item")}>
-                <span className="info-list-item-child">
-                  Ngoài những thứ trên, tôi rất thích xem các bộ phim anime Nhật
-                  Bản những lúc rảnh rỗi, nó sẽ làm bay những áp lực khi code có
-                  bug 😊.
-                </span>
-              </li>
-              <li className={cx("info-list-item")}>
-                <span className="info-list-item-child">
-                  Mong muốn của tôi là cố gắng học hỏi, sắp tới được thực tập ở
-                  môi trường công nghệ tốt để học hỏi thêm nhiều về kiến thức và
-                  kinh nghiệm giúp phát triển kĩ năng code tốt hơn.
-                </span>
-              </li>
-            </ul>
-          </section>
+            <div className={cx("content-movie")}>
+                <div style={{ display: "flex", width: "1786px" }}>
+                    <h2>Phim bộ</h2>
+                    <br></br>
+                </div>
+                <div className={cx("list-movie")}>
+                    {movies.map((movie) => {
+                        return (
+                            <Link to={`/detail/${movie.slug}`}>
+                                <div
+                                    className={cx("product-item")}
+                                    key={movie._id}
+                                >
+                                    <img
+                                        className={cx("img-product")}
+                                        src={`https://img.phimapi.com/${movie.poster_url}`}
+                                        alt={movie.name}
+                                    />
+                                    <h3 className={cx("name-product")}>
+                                        {movie.name}
+                                    </h3>
+                                </div>
+                            </Link>
+                        );
+                    })}
+                </div>
+            </div>
+            <ToastContainer
+                icon={<FaTheRedYeti style={{ color: "green" }} />}
+            />
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Home;

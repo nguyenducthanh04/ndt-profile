@@ -1,128 +1,97 @@
-import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./Header.module.scss";
-import { faGithub, faSquareFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import ImageAvatar from "~/assets/images/thanhdz.jpg";
-import { useDarkMode } from "~/DarkModeContext";
-import Menu from "~/components/Popper/Menu";
-const cx = classNames.bind(styles);
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Carousel from "react-bootstrap/Carousel";
+import { useNavigate } from "react-router-dom";
 function Header() {
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
+    const [keyword, setKeyword] = useState("");
 
-  const headerClasses = cx("wrapper", {
-    "dark-mode": isDarkMode,
-    "light-mode": !isDarkMode,
-  });
-  const userData = localStorage.getItem("userData");
-  // console.log("user:", userData);
-  // const user = JSON.parse(userData);
-  // console.log(user.name);
-  return (
-    <header className={headerClasses}>
-      <div className={cx("inner")}>
-        <div className={cx("inner-left")}>
-          <ul className={cx("inner-item")}>
-            <li className={cx("inner-item-li")}>
-              <a className={cx("inner-item-li_link")} href="">
-                <p className={cx("inner-name")}>
-                  <Link to="/" className={cx("router-link")}>
-                    Nguyễn Đức Thanh
-                  </Link>
-                </p>
-              </a>
-              <a className={cx("inner-item-li_link")} href="">
-                <p className={cx("inner-name")}>
-                  <Link to="/blog" className={cx("router-link")}>
-                    Blogs
-                  </Link>
-                </p>
-              </a>
-              <a className={cx("inner-item-li_link")} href="">
-                <p className={cx("inner-name")}>
-                  <Link to="/contact" className={cx("router-link")}>
-                    Contact
-                  </Link>
-                </p>
-              </a>
-              <a className={cx("inner-item-li_link")} href="">
-                <p className={cx("inner-name")}>
-                  <Link to="/profile" className={cx("router-link")}>
-                    Profile
-                  </Link>
-                </p>
-              </a>
-              <a className={cx("inner-item-li_link")} href="">
-                <p className={cx("inner-name-chat")}>Chat</p>
-              </a>
-            </li>
-          </ul>
-          <Menu>
-            <div className={cx("menu-mobile-btn")}>
-              <FontAwesomeIcon className={cx("menu-icon")} icon={faBars} />
-            </div>
-          </Menu>
-        </div>
-        <div className={cx("inner-right")}>
-          <ul className={cx("inner-item-right")}>
-            <li className={cx("inner-item-li-right")}>
-              <a
-                className={cx("inner-item-li_link")}
-                href="https://fullstack.edu.vn/"
-                target="_blank"
-              >
-                <img
-                  className={cx("logo-f8")}
-                  src="https://ndng.net/_next/image?url=https%3A%2F%2Ffullstack.edu.vn%2Fstatic%2Fmedia%2Ff8-icon.18cd71cfcfa33566a22b.png&w=32&q=75"
-                ></img>
-              </a>
-            </li>
-            <li className={cx("inner-item-li-right")}>
-              <a
-                className={cx("inner-item-li_link")}
-                href="https://www.facebook.com/profile.php?id=100029011241481"
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={faSquareFacebook}
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        // Sử dụng hook useNavigate để chuyển hướng
+        navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
+    };
+    const headerStyle = {
+        fontSize: "1.6rem",
+    };
+    const navLink = {
+        color: "#fff",
+    };
+    const searchStyle = {
+        height: "50px", // Điều chỉnh chiều cao của ô tìm kiếm
+        width: "300px",
+        fontSize: "1.6rem", // Điều chỉnh kích thước chữ trong ô tìm kiếm
+    };
+
+    const searchButtonStyle = {
+        // Điều chỉnh chiều cao của nút tìm kiếm
+        fontSize: "1.6rem", // Điều chỉnh kích thước chữ trong nút tìm kiếm
+    };
+    return (
+        <Navbar expand="lg" className="bg-body-dark" style={headerStyle}>
+            <Container fluid>
+                <Navbar.Brand
+                    href="#"
+                    style={{
+                        fontWeight: "800",
+                        color: "red",
+                        fontSize: "1.8rem",
+                    }}
+                >
+                    THANHMOVIE
+                </Navbar.Brand>
+                <Navbar.Toggle
+                    aria-controls="navbarScroll"
+                    style={{ color: "#fff" }}
                 />
-              </a>
-            </li>
-            <li className={cx("inner-item-li-right")}>
-              <a
-                className={cx("inner-item-li_link")}
-                href="https://github.com/nguyenducthanh04"
-                target="_blank"
-              >
-                <FontAwesomeIcon className={cx("icon")} icon={faGithub} />
-              </a>
-            </li>
-            <li className={cx("inner-item-li-right")}>
-              <button
-                className={cx("inner-item-li_link")}
-                onClick={toggleDarkMode}
-              >
-                <FontAwesomeIcon
-                  className={cx("icon")}
-                  icon={isDarkMode ? faMoon : faSun}
-                />
-              </button>
-            </li>
-            <li className={cx("inner-item-li-right")}>
-              <a className={cx("inner-item-li_link")} href="/profile">
-                <img className={cx("avatar")} src={ImageAvatar}></img>
-              </a>
-            </li>
-            <li className={cx("inner-item-li-right")}>
-              <button className={cx("language")}>VI</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
-  );
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: "100px" }}
+                        navbarScroll
+                    >
+                        <Nav.Link href="/" style={navLink}>
+                            Trang chủ
+                        </Nav.Link>
+                        <Nav.Link href="/phim-le" style={navLink}>
+                            Phim lẻ
+                        </Nav.Link>
+                        <Nav.Link href="/phim-bo" style={navLink}>
+                            Phim bộ
+                        </Nav.Link>
+                        <Nav.Link href="/hoat-hinh" style={navLink}>
+                            Hoạt hình
+                        </Nav.Link>
+                        <Nav.Link href="/tv-shows" style={navLink}>
+                            TV Shows
+                        </Nav.Link>
+                    </Nav>
+                    <Form className="d-flex">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search"
+                            className="me-4"
+                            aria-label="Search"
+                            style={searchStyle}
+                            value={keyword}
+                            onChange={(e) => setKeyword(e.target.value)}
+                        />
+                        <Button
+                            variant="outline-success"
+                            style={searchButtonStyle}
+                            onClick={handleSearch}
+                        >
+                            Search
+                        </Button>
+                    </Form>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 }
-
 export default Header;
