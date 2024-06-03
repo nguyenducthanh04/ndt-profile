@@ -56,19 +56,22 @@ function Header() {
                         navbarScroll
                     >
                         <Nav.Link href="/" style={navLink}>
-                            Trang chủ
+                            Trang Chủ
                         </Nav.Link>
                         <Nav.Link href="/phim-le" style={navLink}>
-                            Phim lẻ
+                            Phim Lẻ
                         </Nav.Link>
                         <Nav.Link href="/phim-bo" style={navLink}>
-                            Phim bộ
+                            Phim Bộ
                         </Nav.Link>
                         <Nav.Link href="/hoat-hinh" style={navLink}>
-                            Hoạt hình
+                            Hoạt Hình
                         </Nav.Link>
                         <Nav.Link href="/tv-shows" style={navLink}>
                             TV Shows
+                        </Nav.Link>
+                        <Nav.Link href="/about" style={navLink}>
+                            Giới Thiệu
                         </Nav.Link>
                     </Nav>
                     <Form className="d-flex">
