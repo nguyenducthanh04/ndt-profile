@@ -13,7 +13,7 @@ const publicRoutes = [
     { path: "/watch-movie/:slug", component: WatchMovie },
     { path: "/phim-le", component: MovieOdd },
     { path: "/phim-bo", component: Movies },
-    { path: "/hoat-hinh", component: Anime },
+    { path: "/anime", component: Anime },
     { path: "/search", component: Search },
     { path: "/tv-shows", component: Tvshow },
     { path: "/about", component: About },

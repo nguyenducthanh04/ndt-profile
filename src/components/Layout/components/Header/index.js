@@ -64,8 +64,8 @@ function Header() {
                         <Nav.Link href="/phim-bo" style={navLink}>
                             Phim Bộ
                         </Nav.Link>
-                        <Nav.Link href="/hoat-hinh" style={navLink}>
-                            Hoạt Hình
+                        <Nav.Link href="/anime" style={navLink}>
+                            Anime
                         </Nav.Link>
                         <Nav.Link href="/tv-shows" style={navLink}>
                             TV Shows
