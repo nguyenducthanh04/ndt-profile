@@ -36,7 +36,7 @@ function Header() {
         <Navbar expand="lg" className="bg-body-dark" style={headerStyle}>
             <Container fluid>
                 <Navbar.Brand
-                    href="#"
+                    href="/"
                     style={{
                         fontWeight: "800",
                         color: "red",
@@ -47,7 +47,7 @@ function Header() {
                 </Navbar.Brand>
                 <Navbar.Toggle
                     aria-controls="navbarScroll"
-                    style={{ color: "#fff" }}
+                    style={{ color: "#fff", backgroundColor: "#fff" }}
                 />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
