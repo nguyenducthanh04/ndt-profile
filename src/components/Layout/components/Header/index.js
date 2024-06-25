@@ -4,8 +4,6 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
 function Header() {
     const [keyword, setKeyword] = useState("");
@@ -13,24 +11,35 @@ function Header() {
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        // Sử dụng hook useNavigate để chuyển hướng
         navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
+    };
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleSearch();
+        }
     };
     const headerStyle = {
         fontSize: "1.6rem",
+        position: "fixed",
+        zIndex: "1",
+        display: "flex",
+        justifyContent: "space-between",
+        backgroundColor: "black",
+        width: "100%",
     };
     const navLink = {
         color: "#fff",
     };
     const searchStyle = {
-        height: "50px", // Điều chỉnh chiều cao của ô tìm kiếm
+        height: "50px",
         width: "300px",
-        fontSize: "1.6rem", // Điều chỉnh kích thước chữ trong ô tìm kiếm
+        fontSize: "1.6rem",
+        marginLeft: "auto",
     };
 
     const searchButtonStyle = {
-        // Điều chỉnh chiều cao của nút tìm kiếm
-        fontSize: "1.6rem", // Điều chỉnh kích thước chữ trong nút tìm kiếm
+        fontSize: "1.6rem",
     };
     return (
         <Navbar expand="lg" className="bg-body-dark" style={headerStyle}>
@@ -70,6 +79,9 @@ function Header() {
                         <Nav.Link href="/tv-shows" style={navLink}>
                             TV Shows
                         </Nav.Link>
+                        <Nav.Link href="/saved-movie" style={navLink}>
+                            Phim Đã Lưu
+                        </Nav.Link>
                         <Nav.Link href="/about" style={navLink}>
                             Giới Thiệu
                         </Nav.Link>
@@ -83,6 +95,7 @@ function Header() {
                             style={searchStyle}
                             value={keyword}
                             onChange={(e) => setKeyword(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                         <Button
                             variant="outline-success"

@@ -2,6 +2,7 @@
     // max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    margin-top: 60px;
 }
 
 h1 {
@@ -58,6 +59,7 @@ nav a {
 .info {
     padding: 20px;
 }
+
 @media (max-width: 768px) {
     h1 {
         font-size: 20px;
@@ -90,11 +92,7 @@ nav a {
         flex: 1 0 100%;
     }
 }
-@media (max-width: 480px) {
-    .info ul {
-        /* display: none; */
-    }
-}
+
 .container {
     padding: 2vw;
 }

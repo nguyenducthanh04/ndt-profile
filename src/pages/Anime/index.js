@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import axios from "axios";
 import styles from "./Anime.module.scss";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,7 +43,7 @@ function Anime() {
 
     return (
         <div className={cx("wrapper")}>
-            <h1>Danh sách phim hoạt hình</h1>
+            <h1>Danh sách phim anime/hoạt hình</h1>
             <div className={cx("movie-list")}>
                 {movies?.map((movie) => (
                     <Link to={`/detail/${movie.slug}`}>

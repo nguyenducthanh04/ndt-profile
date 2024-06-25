@@ -6,6 +6,7 @@ import Movies from "~/pages/Movies";
 import Anime from "~/pages/Anime";
 import Search from "~/pages/Search";
 import Tvshow from "~/pages/Tvshow";
+import SavedMovie from "~/pages/SavedMovie";
 import About from "~/pages/About";
 const publicRoutes = [
     { path: "/", component: Home },
@@ -16,6 +17,7 @@ const publicRoutes = [
     { path: "/anime", component: Anime },
     { path: "/search", component: Search },
     { path: "/tv-shows", component: Tvshow },
+    { path: "/saved-movie", component: SavedMovie },
     { path: "/about", component: About },
 ];
 const privateRoutes = [];

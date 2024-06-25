@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaCheckCircle, FaTheRedYeti } from "react-icons/fa";
+import { FaTheRedYeti } from "react-icons/fa";
 import "react-slideshow-image/dist/styles.css";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -76,7 +76,6 @@ function Home() {
                 ); // Thay thế bằng URL API thực tế
                 const result = await response.json();
                 setBanner(result.items);
-                console.log("kq:", result.items);
             } catch (error) {
                 console.error("Lỗi khi fetch dữ liệu:", error);
             }
@@ -107,53 +106,22 @@ function Home() {
             <Carousel data-bs-theme="dark">
                 {banner?.map((bn) => (
                     <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={bn.poster_url}
-                            alt={bn.name}
-                        />
-                        <Carousel.Caption>
-                            <h5>First slide label</h5>
-                            <p>
-                                Nulla vitae elit libero, a pharetra augue mollis
-                                interdum.
-                            </p>
-                        </Carousel.Caption>
+                        <Link to={`/detail/${bn.slug}`}>
+                            <img
+                                className="d-block w-100"
+                                src={bn.poster_url}
+                                alt={bn.name}
+                            />
+                        </Link>
                     </Carousel.Item>
                 ))}
-
-                {/* <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="https://img.phimapi.com/upload/vod/20240530-1/fd1ab7132570217d6087388c1660b91c.jpg"
-                        alt="Second slide"
-                    />
-                    <Carousel.Caption>
-                        <h5>Second slide label</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
-                        </p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="https://img.phimapi.com/upload/vod/20240530-1/fd1ab7132570217d6087388c1660b91c.jpg"
-                        alt="Third slide"
-                    />
-                    <Carousel.Caption>
-                        <h5>Third slide label</h5>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl
-                            consectetur.
-                        </p>
-                    </Carousel.Caption>
-                </Carousel.Item> */}
             </Carousel>
             <div className={cx("content-movie")}>
                 <div style={{ display: "flex", width: "1786px" }}>
                     <h2>Phim lẻ</h2>
+                    <h2 style={{ float: "right", marginRight: "20px" }}>
+                        <a href="/phim-le">Xem tất cả</a>
+                    </h2>
                     <br></br>
                 </div>
                 <div className={cx("list-movie")}>
@@ -181,6 +149,9 @@ function Home() {
             <div className={cx("content-movie")}>
                 <div style={{ display: "flex", width: "1786px" }}>
                     <h2>Hoạt hình</h2>
+                    <h2 style={{ float: "right", marginRight: "20px" }}>
+                        <a href="/anime">Xem tất cả</a>
+                    </h2>
                     <br></br>
                 </div>
                 <div className={cx("list-movie")}>
@@ -208,6 +179,9 @@ function Home() {
             <div className={cx("content-movie")}>
                 <div style={{ display: "flex", width: "1786px" }}>
                     <h2>Phim bộ</h2>
+                    <h2 style={{ float: "right", marginRight: "20px" }}>
+                        <a href="/phim-bo">Xem tất cả</a>
+                    </h2>
                     <br></br>
                 </div>
                 <div className={cx("list-movie")}>

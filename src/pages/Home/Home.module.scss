@@ -1,6 +1,7 @@
 .wrapper {
     // margin-top: 10px;
     width: 100%;
+    margin-top: 60px;
 }
 .each-slide-effect > div {
     display: flex;
@@ -44,6 +45,9 @@
     margin-top: 10px;
     color: var(--white);
     max-width: 280px;
+    text-overflow: ellipsis; /* Hiển thị dấu chấm lửng (...) thay vì bị cắt ngang */
+    white-space: nowrap; /* Ngăn chặn tự động xuống dòng */
+    overflow: hidden; /* Ẩn phần văn bản bị cắt bớt */
 }
 .img-product:hover {
     transform: scale(1.2); /* Phóng to ảnh lên 1.2 lần khi hover */

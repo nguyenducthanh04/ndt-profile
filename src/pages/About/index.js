@@ -61,7 +61,9 @@ export default function EditButton() {
                             ></div>
                             <MDBCardBody className="text-black p-4">
                                 <div className="mb-5">
-                                    <p className="lead fw-normal mb-1">About</p>
+                                    <p className="lead fw-normal mb-1">
+                                        Giới thiệu
+                                    </p>
                                     <div
                                         className="p-4"
                                         style={{ backgroundColor: "#f8f9fa" }}
@@ -85,7 +87,7 @@ export default function EditButton() {
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center mb-4">
                                     <MDBCardText className="lead fw-normal mb-0">
-                                        Recent photos
+                                        Phim yêu thích
                                     </MDBCardText>
                                 </div>
                                 <MDBRow>

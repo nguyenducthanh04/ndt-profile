@@ -1,12 +1,9 @@
-.wrapper {
-    width: 100%;
-    height: 70px;
-    background: rgb(10, 10, 10);
-    display: flex;
-    align-items: center;
+.bg-body-dark {
     position: fixed;
-    z-index: 999;
-    top: 0;
+}
+.me-auto {
+    display: flex; /* Bật bố cục flexbox */
+    flex-wrap: wrap; /* Cho phép các mục tự động xuống dòng nếu cần */
 }
 .menu {
     display: flex;
