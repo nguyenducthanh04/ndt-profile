@@ -1,10 +1,8 @@
-/* Sản phẩm */
 .wrapper h1 {
-    margin-top: 90px;
+    margin-top: 50px;
     margin-bottom: 30px;
 }
 .movie-list {
-    // margin-left: 300px;
     text-align: center;
 }
 .product-item {
@@ -41,49 +39,12 @@
     transform: scale(1.2); /* Phóng to ảnh lên 1.2 lần khi hover */
     transition: all 0.3s ease; /* Thời gian chuyển tiếp 0.3s */
 }
-.pagination {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-    overflow-y: auto;
-    padding-bottom: 12px;
-    margin-left: 150px;
-}
-.pagination .page-button {
-    margin: 0 5px;
-    padding: 10px 15px;
-    border: none;
-    background-color: #ffbe0b;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.pagination .page-button.active {
-    background-color: #0771c9;
-    color: white;
+em {
+    color: #17c964;
 }
 @media (max-width: 1024px) {
     .product-item {
-        width: calc(50% - 10px); // 2 phim mỗi hàng trên màn hình nhỏ hơn 1024px
-    }
-}
-
-@media (max-width: 768px) {
-    .product-item {
-        width: calc(50% - 10px); // 2 phim mỗi hàng trên màn hình nhỏ hơn 768px
-    }
-}
-
-@media (max-width: 480px) {
-    .product-item {
-        width: calc(100% - 10px); // 1 phim mỗi hàng trên màn hình nhỏ hơn 480px
-    }
-}
-@media (width: 428px) {
-    .product-item {
-        margin-left: 30px;
-    }
-    .wrapper h1 {
-        margin-left: 52px;
+        width: calc(50%);
+        margin-left: 0;
     }
 }

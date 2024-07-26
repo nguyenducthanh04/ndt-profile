@@ -1,15 +1,15 @@
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import classNames from "classnames/bind";
+import styles from "./Header.module.scss";
+import { Link, useNavigate } from "react-router-dom";
+import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+
+const cx = classNames.bind(styles);
+
 function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [keyword, setKeyword] = useState("");
-
     const navigate = useNavigate();
-
     const handleSearch = () => {
         navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
     };
@@ -19,95 +19,121 @@ function Header() {
             handleSearch();
         }
     };
-    const headerStyle = {
-        fontSize: "1.6rem",
-        position: "fixed",
-        zIndex: "1",
-        display: "flex",
-        justifyContent: "space-between",
-        backgroundColor: "black",
-        width: "100%",
-    };
-    const navLink = {
-        color: "#fff",
-    };
-    const searchStyle = {
-        height: "50px",
-        width: "300px",
-        fontSize: "1.6rem",
-        marginLeft: "auto",
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
 
-    const searchButtonStyle = {
-        fontSize: "1.6rem",
-    };
     return (
-        <Navbar expand="lg" className="bg-body-dark" style={headerStyle}>
-            <Container fluid>
-                <Navbar.Brand
-                    href="/"
-                    style={{
-                        fontWeight: "800",
-                        color: "red",
-                        fontSize: "1.8rem",
-                    }}
-                >
-                    THANHMOVIE
-                </Navbar.Brand>
-                <Navbar.Toggle
-                    aria-controls="navbarScroll"
-                    style={{ color: "#fff", backgroundColor: "#fff" }}
-                />
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        // style={{ maxHeight: "100px" }}
-                        navbarScroll
-                    >
-                        <Nav.Link href="/" style={navLink}>
-                            Trang Chủ
-                        </Nav.Link>
-                        <Nav.Link href="/phim-le" style={navLink}>
-                            Phim Lẻ
-                        </Nav.Link>
-                        <Nav.Link href="/phim-bo" style={navLink}>
-                            Phim Bộ
-                        </Nav.Link>
-                        <Nav.Link href="/anime" style={navLink}>
-                            Anime
-                        </Nav.Link>
-                        <Nav.Link href="/tv-shows" style={navLink}>
-                            TV Shows
-                        </Nav.Link>
-                        <Nav.Link href="/saved-movie" style={navLink}>
-                            Phim Đã Lưu
-                        </Nav.Link>
-                        <Nav.Link href="/about" style={navLink}>
-                            Giới Thiệu
-                        </Nav.Link>
-                    </Nav>
-                    <Form className="d-flex">
-                        <Form.Control
-                            type="search"
-                            placeholder="Search"
-                            className="me-4"
-                            aria-label="Search"
-                            style={searchStyle}
+        <div className={cx("wrapper")}>
+            <div className={cx("navbar")}>
+                <div className={cx("nav-left")}>
+                    <Link to={"/"} className={cx("logo-name")}>
+                        <h2>ThanhNguyen</h2>
+                    </Link>
+                    <ul>
+                        <Link to={"/"} className={cx("link")}>
+                            <li>Trang Chủ</li>
+                        </Link>
+                        <Link to={"/phim-le"} className={cx("link")}>
+                            <li>Phim Lẻ</li>
+                        </Link>
+                        <Link to={"/phim-bo"} className={cx("link")}>
+                            <li>Phim Bộ</li>
+                        </Link>
+                        <Link to={"/anime"} className={cx("link")}>
+                            <li>Anime</li>
+                        </Link>
+                        <Link to={"/tv-shows"} className={cx("link")}>
+                            <li>TV-Shows</li>
+                        </Link>
+                        <Link to={"/saved-movie"} className={cx("link")}>
+                            <li>Phim Đã Lưu</li>
+                        </Link>
+                        <Link to={"/about"} className={cx("link")}>
+                            <li>Giới thiệu</li>
+                        </Link>
+                    </ul>
+                </div>
+                <div className={cx("nav-right")}>
+                    <div className={cx("search-container")}>
+                        <input
+                            placeholder="Tìm kiếm phim..."
+                            className={cx("search-input")}
                             value={keyword}
                             onChange={(e) => setKeyword(e.target.value)}
                             onKeyDown={handleKeyDown}
                         />
-                        <Button
-                            variant="outline-success"
-                            style={searchButtonStyle}
-                            onClick={handleSearch}
+                        <FaSearch className={cx("icon-search")} />
+                    </div>
+                    <div className={cx("menu-icon")} onClick={toggleMenu}>
+                        {isMenuOpen ? <FaTimes /> : <FaBars />}
+                    </div>
+                </div>
+            </div>
+            {isMenuOpen && (
+                <div className={cx("mobile-menu")}>
+                    <div className={cx("search-container-mobile")}>
+                        <input
+                            placeholder="Tìm kiếm phim..."
+                            className={cx("search-input-mobile")}
+                        />
+                        <FaSearch className={cx("icon-search-mobile")} />
+                    </div>
+                    <ul>
+                        <Link
+                            to={"/"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
                         >
-                            Search
-                        </Button>
-                    </Form>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                            <li>Trang Chủ</li>
+                        </Link>
+                        <Link
+                            to={"/phim-le"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
+                        >
+                            <li>Phim Lẻ</li>
+                        </Link>
+                        <Link
+                            to={"/phim-bo"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
+                        >
+                            <li>Phim Bộ</li>
+                        </Link>
+                        <Link
+                            to={"/anime"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
+                        >
+                            <li>Anime</li>
+                        </Link>
+                        <Link
+                            to={"/tv-shows"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
+                        >
+                            <li>TV-Shows</li>
+                        </Link>
+                        <Link
+                            to={"/saved-movie"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
+                        >
+                            <li>Phim Đã Lưu</li>
+                        </Link>
+                        <Link
+                            to={"/about"}
+                            className={cx("link-mobile")}
+                            onClick={toggleMenu}
+                        >
+                            <li>Giới Thiệu</li>
+                        </Link>
+                    </ul>
+                </div>
+            )}
+        </div>
     );
 }
+
 export default Header;

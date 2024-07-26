@@ -3,14 +3,14 @@
     flex-direction: column;
 }
 .container {
-    width: 100%;
-    min-height: auto; //1100px
+    width: 100vw;
+    min-height: auto;
     background: rgb(10, 10, 10);
     border-radius: 10px;
 }
 
 @media (max-width: 740px) {
     .container {
-        width: 375px;
+        width: 100vw;
     }
 }

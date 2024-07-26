@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import axios from "axios";
 import styles from "./Movies.module.scss";
 import { useParams, Link } from "react-router-dom";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const cx = classNames.bind(styles);
@@ -30,15 +30,98 @@ function Movies() {
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
-        toast.info(`Bạn đã chuyển sang trang số ${page}`, {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+        toast.success(`Bạn đã chuyển sang trang ${page}`, {
+            icon: <FaCheckCircle style={{ color: "green" }} />,
         });
+    };
+
+    const renderPagination = () => {
+        const pages = [];
+
+        // Prev button
+        if (currentPage > 1) {
+            pages.push(
+                <button
+                    key="prev"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    className={cx("page-button")}
+                >
+                    <FaChevronLeft />
+                </button>
+            );
+        }
+
+        // Page numbers
+        if (currentPage > 1) {
+            pages.push(
+                <button
+                    key={1}
+                    onClick={() => handlePageChange(1)}
+                    className={cx("page-button", {
+                        active: currentPage === 1,
+                    })}
+                >
+                    1
+                </button>
+            );
+        }
+
+        if (currentPage > 2) {
+            pages.push(
+                <button key="ellipsis1" className={cx("ellipsis")}>
+                    ...
+                </button>
+            );
+        }
+
+        pages.push(
+            <button
+                key={currentPage}
+                onClick={() => handlePageChange(currentPage)}
+                className={cx("page-button", {
+                    active: true,
+                })}
+            >
+                {currentPage}
+            </button>
+        );
+
+        if (currentPage < totalPages - 1) {
+            pages.push(
+                <button key="ellipsis2" className={cx("ellipsis")}>
+                    ...
+                </button>
+            );
+        }
+
+        if (currentPage < totalPages) {
+            pages.push(
+                <button
+                    key={totalPages}
+                    onClick={() => handlePageChange(totalPages)}
+                    className={cx("page-button", {
+                        active: currentPage === totalPages,
+                    })}
+                >
+                    {totalPages}
+                </button>
+            );
+        }
+
+        // Next button
+        if (currentPage < totalPages) {
+            pages.push(
+                <button
+                    key="next"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    className={cx("page-button")}
+                >
+                    <FaChevronRight />
+                </button>
+            );
+        }
+
+        return pages;
     };
 
     return (
@@ -58,22 +141,7 @@ function Movies() {
                     </Link>
                 ))}
             </div>
-            <div className={cx("pagination")}>
-                {Array.from(
-                    { length: totalPages },
-                    (_, index) => index + 1
-                ).map((page) => (
-                    <button
-                        key={page}
-                        onClick={() => handlePageChange(page)}
-                        className={cx("page-button", {
-                            active: page === currentPage,
-                        })}
-                    >
-                        {page}
-                    </button>
-                ))}
-            </div>
+            <div className={cx("pagination")}>{renderPagination()}</div>
             <ToastContainer
                 icon={<FaCheckCircle style={{ color: "green" }} />}
             />

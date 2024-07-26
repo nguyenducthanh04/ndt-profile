@@ -30,7 +30,9 @@ function Search() {
 
     return (
         <div className={cx("wrapper")}>
-            <h1>KẾT QUẢ TÌM KIẾM CHO TỪ KHÓA: {keyword}</h1>
+            <h1>
+                KẾT QUẢ TÌM KIẾM CHO TỪ KHÓA: <em>{keyword}</em>
+            </h1>
             <div className={cx("movie-list")}>
                 {movies?.map((movie) => (
                     <Link to={`/detail/${movie.slug}`}>

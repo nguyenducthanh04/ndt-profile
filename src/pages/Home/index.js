@@ -17,49 +17,13 @@ function Home() {
     const [banner, setBanner] = useState([]);
     const [error, setError] = useState(null);
     useEffect(() => {
-        // Hàm fetch dữ liệu từ API
         const fetchData = async () => {
             try {
                 const response = await fetch(
                     "https://phimapi.com/v1/api/danh-sach/phim-le"
-                ); // Thay thế bằng URL API thực tế
+                );
                 const result = await response.json();
-                setMovieOdd(result.data.items); // Truy cập mảng movieOdd từ phản hồi API
-                // console.log("kq:", result.data.items);
-            } catch (error) {
-                console.error("Lỗi khi fetch dữ liệu:", error);
-            }
-        };
-
-        fetchData();
-    }, []); // Mảng dep
-    useEffect(() => {
-        // Hàm fetch dữ liệu từ API
-        const fetchData = async () => {
-            try {
-                const response = await fetch(
-                    "https://phimapi.com/v1/api/danh-sach/hoat-hinh"
-                ); // Thay thế bằng URL API thực tế
-                const result = await response.json();
-                setAnime(result.data.items);
-                // console.log("kq:", result.data.items);
-            } catch (error) {
-                console.error("Lỗi khi fetch dữ liệu:", error);
-            }
-        };
-
-        fetchData();
-    }, []); // Mảng dep
-    useEffect(() => {
-        // Hàm fetch dữ liệu từ API
-        const fetchData = async () => {
-            try {
-                const response = await fetch(
-                    "https://phimapi.com/v1/api/danh-sach/phim-bo"
-                ); // Thay thế bằng URL API thực tế
-                const result = await response.json();
-                setMovies(result.data.items);
-                // console.log("kq:", result.data.items);
+                setMovieOdd(result.data.items);
             } catch (error) {
                 console.error("Lỗi khi fetch dữ liệu:", error);
             }
@@ -68,12 +32,41 @@ function Home() {
         fetchData();
     }, []);
     useEffect(() => {
-        // Hàm fetch dữ liệu từ API
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/v1/api/danh-sach/hoat-hinh"
+                );
+                const result = await response.json();
+                setAnime(result.data.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/v1/api/danh-sach/phim-bo"
+                );
+                const result = await response.json();
+                setMovies(result.data.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
                     "https://phimapi.com/danh-sach/phim-moi-cap-nhat"
-                ); // Thay thế bằng URL API thực tế
+                );
                 const result = await response.json();
                 setBanner(result.items);
             } catch (error) {
@@ -82,7 +75,7 @@ function Home() {
         };
 
         fetchData();
-    }, []); // Mảng dep
+    }, []);
     useEffect(() => {
         toast.success(
             `Chào mừng đến với ThanhMovie ! Chúc bạn xem phim vui vẻ ^^`,
@@ -96,13 +89,13 @@ function Home() {
                 progress: undefined,
             }
         );
-    }, []); // Chỉ chạy một lần khi component được mount
+    }, []);
 
     if (error) {
         return <div>Error: {error.message}</div>;
     }
     return (
-        <div className={cx("wrapper")}>
+        <div className={cx("home-content")}>
             <Carousel data-bs-theme="dark">
                 {banner?.map((bn) => (
                     <Carousel.Item>
@@ -117,7 +110,7 @@ function Home() {
                 ))}
             </Carousel>
             <div className={cx("content-movie")}>
-                <div style={{ display: "flex", width: "1786px" }}>
+                <div style={{ display: "flex" }}>
                     <h2>Phim lẻ</h2>
                     <h2 style={{ float: "right", marginRight: "20px" }}>
                         <a href="/phim-le">Xem tất cả</a>
@@ -147,7 +140,7 @@ function Home() {
                 </div>
             </div>
             <div className={cx("content-movie")}>
-                <div style={{ display: "flex", width: "1786px" }}>
+                <div style={{ display: "flex" }}>
                     <h2>Hoạt hình</h2>
                     <h2 style={{ float: "right", marginRight: "20px" }}>
                         <a href="/anime">Xem tất cả</a>
@@ -177,7 +170,7 @@ function Home() {
                 </div>
             </div>
             <div className={cx("content-movie")}>
-                <div style={{ display: "flex", width: "1786px" }}>
+                <div style={{ display: "flex" }}>
                     <h2>Phim bộ</h2>
                     <h2 style={{ float: "right", marginRight: "20px" }}>
                         <a href="/phim-bo">Xem tất cả</a>

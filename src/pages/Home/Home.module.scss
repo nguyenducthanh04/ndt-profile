@@ -1,7 +1,8 @@
-.wrapper {
-    // margin-top: 10px;
-    width: 100%;
-    margin-top: 60px;
+.home-content {
+    width: 100vw;
+}
+.content-movie {
+    margin-top: 30px;
 }
 .each-slide-effect > div {
     display: flex;
@@ -53,9 +54,7 @@
     transform: scale(1.2); /* Phóng to ảnh lên 1.2 lần khi hover */
     transition: all 0.3s ease; /* Thời gian chuyển tiếp 0.3s */
 }
-// .content-movie {
-//     margin-left: 110px;
-// }
+
 .content-movie h2 {
     margin-left: 26px;
     margin-top: 20px;

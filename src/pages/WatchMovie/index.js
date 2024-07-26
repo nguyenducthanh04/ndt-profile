@@ -24,7 +24,6 @@ function WatchMovie() {
     }, [slug]);
 
     useEffect(() => {
-        // Thiết lập URL mặc định từ tập phim đầu tiên khi component được tải lần đầu
         if (movieCurrent.episodes && movieCurrent.episodes[0]?.server_data) {
             setCurrentUrl(
                 movieCurrent.episodes[0].server_data[0]?.link_m3u8 ||

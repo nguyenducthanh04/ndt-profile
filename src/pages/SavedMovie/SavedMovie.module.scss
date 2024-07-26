@@ -3,7 +3,7 @@
 }
 /* Sản phẩm */
 .wrapper h1 {
-    margin-top: 90px;
+    margin-top: 50px;
     margin-bottom: 30px;
 }
 .movie-list {
@@ -67,26 +67,7 @@
 }
 @media (max-width: 1024px) {
     .product-item {
-        width: calc(50% - 10px); // 2 phim mỗi hàng trên màn hình nhỏ hơn 1024px
-    }
-}
-
-@media (max-width: 768px) {
-    .product-item {
-        width: calc(50% - 10px); // 2 phim mỗi hàng trên màn hình nhỏ hơn 768px
-    }
-}
-
-@media (max-width: 480px) {
-    .product-item {
-        width: calc(100% - 10px); // 1 phim mỗi hàng trên màn hình nhỏ hơn 480px
-    }
-}
-@media (width: 428px) {
-    .product-item {
-        margin-left: 30px;
-    }
-    .wrapper h1 {
-        margin-left: 52px;
+        width: calc(50%);
+        margin-left: 0;
     }
 }
