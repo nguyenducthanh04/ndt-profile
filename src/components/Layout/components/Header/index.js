@@ -76,6 +76,9 @@ function Header() {
                         <input
                             placeholder="Tìm kiếm phim..."
                             className={cx("search-input-mobile")}
+                            value={keyword}
+                            onChange={(e) => setKeyword(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                         <FaSearch className={cx("icon-search-mobile")} />
                     </div>
