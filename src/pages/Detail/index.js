@@ -114,7 +114,7 @@ function Detail() {
                             marginTop: "5px",
                             marginLeft: "6px",
                             height: "30px",
-                            width: "80px",
+                            width: "auto",
                         }}
                     >
                         {movie.episode_current}

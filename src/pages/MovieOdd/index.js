@@ -125,7 +125,7 @@ function MovieOdd() {
     };
 
     return (
-        <div className={cx("wrapper")}>
+        <div className={cx("content-movieodd")}>
             <h1>Danh sách phim lẻ</h1>
             <div className={cx("movie-list")}>
                 {movies?.map((movie) => (

@@ -1,5 +1,5 @@
 .home-content {
-    width: 100vw;
+    width: 100%;
 }
 .content-movie {
     margin-top: 30px;
@@ -19,7 +19,6 @@
     background: #efefef;
     text-align: center;
 }
-/* Sản phẩm */
 .product-item {
     display: inline-block;
     flex: none;
@@ -33,26 +32,24 @@
     margin-left: 17px;
 }
 
-/* Hình ảnh sản phẩm */
 .img-product {
     width: 100%;
     height: 234px;
     object-fit: cover;
 }
 
-/* Tên sản phẩm */
 .name-product {
     font-size: 15px;
     margin-top: 10px;
     color: var(--white);
     max-width: 280px;
-    text-overflow: ellipsis; /* Hiển thị dấu chấm lửng (...) thay vì bị cắt ngang */
-    white-space: nowrap; /* Ngăn chặn tự động xuống dòng */
-    overflow: hidden; /* Ẩn phần văn bản bị cắt bớt */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .img-product:hover {
-    transform: scale(1.2); /* Phóng to ảnh lên 1.2 lần khi hover */
-    transition: all 0.3s ease; /* Thời gian chuyển tiếp 0.3s */
+    transform: scale(1.2);
+    transition: all 0.3s ease;
 }
 
 .content-movie h2 {
@@ -62,7 +59,23 @@
 }
 .list-movie {
     display: flex;
-    overflow-x: auto;
+    overflow-x: scroll;
     white-space: nowrap;
     padding: 10px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none; /* Ẩn thanh cuộn trên IE và Edge */
+    scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+}
+.list-movie::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn */
+}
+
+.list-movie {
+    -ms-overflow-style: none; /* Ẩn thanh cuộn trên IE và Edge */
+    scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+}
+@media (max-width: 1150px) {
+    .content-movie {
+        margin-top: 20px;
+    }
 }

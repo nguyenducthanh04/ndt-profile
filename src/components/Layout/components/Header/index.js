@@ -17,6 +17,7 @@ function Header() {
         if (e.key === "Enter") {
             e.preventDefault();
             handleSearch();
+            setIsMenuOpen(false);
         }
     };
     const toggleMenu = () => {
