@@ -58,7 +58,19 @@ nav a {
 .info {
     padding: 20px;
 }
-
+.btn-save {
+    background: transparent;
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-left: 6px;
+    height: 30px;
+    width: 100px;
+    &:hover {
+        background-color: #ffbe0b;
+        color: black;
+    }
+}
 @media (max-width: 768px) {
     h1 {
         font-size: 20px;

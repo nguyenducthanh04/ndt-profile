@@ -48,7 +48,7 @@ function Header() {
                             <li>TV-Shows</li>
                         </Link>
                         <Link to={"/saved-movie"} className={cx("link")}>
-                            <li>Phim Đã Lưu</li>
+                            <li>Phim Yêu Thích</li>
                         </Link>
                         <Link to={"/about"} className={cx("link")}>
                             <li>Giới thiệu</li>
@@ -124,7 +124,7 @@ function Header() {
                             className={cx("link-mobile")}
                             onClick={toggleMenu}
                         >
-                            <li>Phim Đã Lưu</li>
+                            <li>Phim Yêu Thích</li>
                         </Link>
                         <Link
                             to={"/about"}

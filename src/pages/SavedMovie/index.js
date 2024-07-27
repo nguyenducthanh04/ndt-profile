@@ -22,7 +22,7 @@ function SavedMovie() {
         );
         localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
         setSavedMovies(updatedMovies);
-        toast.success(`Phim đã được xóa khỏi danh sách lưu!`, {
+        toast.success(`Phim đã được xóa khỏi danh sách yêu thích!`, {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: true,
@@ -35,7 +35,7 @@ function SavedMovie() {
 
     return (
         <div className={cx("wrapper")}>
-            <h1>Danh sách phim đã lưu</h1>
+            <h1>Danh sách phim yêu thích</h1>
             <div className={cx("movie-list")}>
                 {savedMovies?.map((movie) => (
                     <div className={cx("product-item")} key={movie._id}>
@@ -51,17 +51,10 @@ function SavedMovie() {
                             <h3 className={cx("name-product")}>{movie.name}</h3>
                         </Link>
                         <button
-                            style={{
-                                background: "red",
-                                color: "#fff",
-                                borderRadius: "3px",
-                                marginLeft: "6px",
-                                height: "30px",
-                                width: "80px",
-                            }}
+                            className={cx("undo-film")}
                             onClick={() => handleRemoveMovie(movie.slug)}
                         >
-                            Xóa phim
+                            💔 Bỏ thích
                         </button>
                     </div>
                 ))}
