@@ -10,7 +10,7 @@ import {
     MDBBtn,
     MDBTypography,
 } from "mdb-react-ui-kit";
-import Avt from "~/assets/images/thanhdn.jpg";
+import Avt from "~/assets/images/avataaaa.jpg";
 import JujutsuKaisen from "~/assets/images/jujutsukaisen.webp";
 import DragonBall from "~/assets/images/dragonball.webp";
 import HunterXHunter from "~/assets/images/hunter.jpg";
