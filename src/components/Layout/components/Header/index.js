@@ -51,7 +51,7 @@ function Header() {
                             <li>Phim Yêu Thích</li>
                         </Link>
                         <Link to={"/about"} className={cx("link")}>
-                            <li>Giới thiệu</li>
+                            <li>Giới Thiệu</li>
                         </Link>
                     </ul>
                 </div>
