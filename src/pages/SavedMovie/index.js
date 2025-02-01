@@ -36,7 +36,8 @@ function SavedMovie() {
     return (
         <div className={cx("wrapper")}>
             <h1>Danh sách phim yêu thích</h1>
-            <div className={cx("movie-list")}>
+            {savedMovies.length !== 0 ? (
+                <div className={cx("movie-list")}>
                 {savedMovies?.map((movie) => (
                     <div className={cx("product-item")} key={movie._id}>
                         <Link
@@ -59,6 +60,7 @@ function SavedMovie() {
                     </div>
                 ))}
             </div>
+            ) : <p style={{textAlign: "center", color: "red"}}>Không có phim yêu thích!</p>}
             <ToastContainer
                 icon={<FaTheRedYeti style={{ color: "green" }} />}
             />
