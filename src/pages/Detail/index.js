@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 import styles from "./Detail.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaTheRedYeti } from "react-icons/fa";
+import { FaTheRedYeti, FaPaperPlane } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 const cx = classNames.bind(styles);
 
@@ -73,6 +74,12 @@ function Detail() {
     const embedUrl = trailerUrl ? trailerUrl.replace("watch?v=", "embed/") : "";
     const listActor = movie.actor;
     const convertListActor = listActor ? listActor.join(", ") : "";
+    const shareOnFacebook = () => {
+        const movieUrl = `https://ndthah.vercel.app/detail/${slug}`;
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(movieUrl)}`;
+      
+        window.open(shareUrl, "_blank", "width=600,height=400");
+      };
     return (
         <div className={cx("container")}>
             <div className={cx("row")}>
@@ -87,11 +94,11 @@ function Detail() {
                         className={cx("play")}
                         to={`/watch-movie/${movie.slug}`}
                     >
-                        Xem ngay
+                        Xem phim
                     </Link>
                     <button
                         style={{
-                            background: "#3a86ff",
+                            background: "#7b9ce5",
                             color: "#fff",
                             borderRadius: "3px",
                             marginTop: "5px",
@@ -104,7 +111,7 @@ function Detail() {
                     </button>
                     <button
                         style={{
-                            background: "#3a86ff",
+                            background: "#7b9ce5",
                             color: "#fff",
                             borderRadius: "3px",
                             marginTop: "5px",
@@ -117,7 +124,7 @@ function Detail() {
                     </button>
                     <button
                         style={{
-                            background: "#3a86ff",
+                            background: "#7b9ce5",
                             color: "#fff",
                             borderRadius: "3px",
                             marginTop: "5px",
@@ -134,6 +141,9 @@ function Detail() {
                         onClick={handleSaveMovie}
                     >
                         {isSaved ? "💔" : "❤️"}
+                    </button>
+                    <button className={cx("btn-share")} onClick={shareOnFacebook}>
+                        <FaPaperPlane/>
                     </button>
                     <br></br>
                     {embedUrl !== "" ? (
