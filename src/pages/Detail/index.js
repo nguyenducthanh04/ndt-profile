@@ -69,6 +69,10 @@ function Detail() {
             setIsSaved(true);
         }
     };
+    const trailerUrl = movie.trailer_url;
+    const embedUrl = trailerUrl ? trailerUrl.replace("watch?v=", "embed/") : "";
+    const listActor = movie.actor;
+    const convertListActor = listActor ? listActor.join(", ") : "";
     return (
         <div className={cx("container")}>
             <div className={cx("row")}>
@@ -118,6 +122,7 @@ function Detail() {
                             borderRadius: "3px",
                             marginTop: "5px",
                             marginLeft: "6px",
+                            marginRight: "6px",
                             height: "30px",
                             width: "auto",
                         }}
@@ -128,8 +133,23 @@ function Detail() {
                         className={cx("btn-save")}
                         onClick={handleSaveMovie}
                     >
-                        {isSaved ? "💔 Bỏ thích" : "❤️ Thích"}
+                        {isSaved ? "💔" : "❤️"}
                     </button>
+                    <br></br>
+                    {embedUrl !== "" ? (
+                        <div style={{marginTop: "30px"}}>
+                        <h3 style={{color: "#ffbe0b", marginBottom: "20px"}}>Trailer</h3>
+                        <iframe 
+                         width="248" 
+                         height="150" 
+                         src={embedUrl}
+                         title="YouTube video player" 
+                         frameBorder="0"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                         allowFullScreen
+                        ></iframe>
+                    </div>
+                    ) : ""}
                 </div>
                 <div className={cx("col-md-6")}>
                     <h2>Nội dung</h2>
@@ -143,8 +163,7 @@ function Detail() {
                     <p>{movie.time}</p>
 
                     <h2>Diễn viên</h2>
-                    <p>{movie.actor}</p>
-
+                        <p>{convertListActor}</p>
                     <h2>Thể loại</h2>
                     <ul>
                         {movie.category?.map((cate) => (

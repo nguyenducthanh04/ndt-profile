@@ -65,7 +65,7 @@ nav a {
     margin-top: 5px;
     margin-left: 6px;
     height: 30px;
-    width: 100px;
+    width: 60px;
     &:hover {
         background-color: #ffbe0b;
         color: black;
@@ -81,6 +81,9 @@ nav a {
     p {
         font-size: 14px;
     }
+    .btn-save {
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -93,6 +96,9 @@ nav a {
     p {
         font-size: 12px;
     }
+    .btn-save {
+        margin-left: 0px;
+    }
 }
 @media (max-width: 768px) {
     .row {
@@ -101,6 +107,9 @@ nav a {
 
     .col-md-6 {
         flex: 1 0 100%;
+    }
+    .btn-save {
+        margin-left: 0px;
     }
 }
 
