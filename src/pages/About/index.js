@@ -20,7 +20,7 @@ export default function EditButton() {
     return (
         <div
             className="gradient-custom-2"
-            style={{ backgroundColor: "#9de2ff" }}
+            style={{ backgroundColor: "black" }}
         >
             <MDBContainer className="py-5 h-100">
                 <MDBRow className="justify-content-center align-items-center h-100">
@@ -29,7 +29,7 @@ export default function EditButton() {
                             <div
                                 className="rounded-top text-white d-flex flex-row"
                                 style={{
-                                    backgroundColor: "#000",
+                                    backgroundColor: "pink",
                                     height: "200px",
                                 }}
                             >
@@ -49,10 +49,10 @@ export default function EditButton() {
                                     className="ms-3"
                                     style={{ marginTop: "130px" }}
                                 >
-                                    <MDBTypography tag="h5">
+                                    <MDBTypography tag="h5" style={{color: "black"}}>
                                         Nguyễn Đức Thanh
                                     </MDBTypography>
-                                    <MDBCardText>Hưng Yên</MDBCardText>
+                                    <MDBCardText style={{color: "black"}}>Hưng Yên</MDBCardText>
                                 </div>
                             </div>
                             <div

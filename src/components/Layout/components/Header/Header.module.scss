@@ -65,6 +65,7 @@
     padding: 0 40px 0 15px;
     background: transparent;
     color: #fff;
+    border: solid 1px #17c964;
 }
 .search-input {
     width: 250px;
@@ -75,26 +76,19 @@
     padding: 0 40px 0 15px;
     background: transparent;
     color: #fff;
+    border: solid 1px #17c964;
 }
 .icon-search-mobile {
     position: absolute;
     right: 10%;
     cursor: pointer;
-    color: #fff;
+    color: red;
 }
 .icon-search {
     position: absolute;
     right: 10px;
     cursor: pointer;
-    color: #fff;
-}
-
-.search-input:focus + .icon-search {
     color: red;
-}
-
-.search-input:focus {
-    border: solid 1px #17c964;
 }
 
 .menu-icon {

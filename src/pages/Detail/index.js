@@ -83,67 +83,27 @@ function Detail() {
     return (
         <div className={cx("container")}>
             <div className={cx("row")}>
-                <div className={cx("col-md-6")}>
+        <div className={cx("col-md-6")}>
                     <img
                         src={movie.thumb_url}
                         alt={movie.name}
                         className={cx("poster-img")}
                     />
-                    <h4 style={{ marginTop: "10px" }}>{movie.name}</h4>
+                    <h4 style={{ marginTop: "20px", marginBottom: "10px" }}>{movie.name}</h4>
                     <Link
                         className={cx("play")}
                         to={`/watch-movie/${movie.slug}`}
                     >
-                        Xem phim
+                        <button className={cx("btn-play")}>Xem phim</button>
                     </Link>
-                    <button
-                        style={{
-                            background: "#7b9ce5",
-                            color: "#fff",
-                            borderRadius: "3px",
-                            marginTop: "5px",
-                            marginLeft: "6px",
-                            height: "30px",
-                            width: "50px",
-                        }}
-                    >
-                        {movie.quality}
-                    </button>
-                    <button
-                        style={{
-                            background: "#7b9ce5",
-                            color: "#fff",
-                            borderRadius: "3px",
-                            marginTop: "5px",
-                            marginLeft: "6px",
-                            height: "30px",
-                            width: "50px",
-                        }}
-                    >
-                        {movie.year}
-                    </button>
-                    <button
-                        style={{
-                            background: "#7b9ce5",
-                            color: "#fff",
-                            borderRadius: "3px",
-                            marginTop: "5px",
-                            marginLeft: "6px",
-                            marginRight: "6px",
-                            height: "30px",
-                            width: "auto",
-                        }}
-                    >
-                        {movie.episode_current}
-                    </button>
                     <button
                         className={cx("btn-save")}
                         onClick={handleSaveMovie}
                     >
-                        {isSaved ? "💔" : "❤️"}
+                        {isSaved ? "💔 Bỏ yêu thích" : "❤️ Yêu thích"}
                     </button>
                     <button className={cx("btn-share")} onClick={shareOnFacebook}>
-                        <FaPaperPlane/>
+                        <FaPaperPlane style={{color: "white"}}/>
                     </button>
                     <br></br>
                     {embedUrl !== "" ? (
@@ -164,16 +124,24 @@ function Detail() {
                 <div className={cx("col-md-6")}>
                     <h2>Nội dung</h2>
                     <p>{movie.content}</p>
-
+                    <h2>Năm phát hành</h2>
+                    <p>{movie.year}</p>
                     <h2>Quốc gia</h2>
                     {movie.country?.map((c) => (
                         <p>{c.name}</p>
                     ))}
                     <h2>Thời lượng</h2>
                     <p>{movie.time}</p>
-
+                    <h2>Số tập phim</h2>
+                    <p>{movie.episode_total} tập</p>
+                    <h2>Đã phát</h2>
+                    <p>{movie.episode_current}</p>
                     <h2>Diễn viên</h2>
                         <p>{convertListActor}</p>
+                    <h2>Chất lượng</h2>
+                        <p>{movie.quality}</p>
+                    <h2>Phụ đề</h2>
+                        <p>{movie.lang}</p>
                     <h2>Thể loại</h2>
                     <ul>
                         {movie.category?.map((cate) => (
