@@ -78,7 +78,7 @@ function Home() {
     }, []);
     useEffect(() => {
         toast.success(
-            `Chào mừng đến với ThanhMovie ! Chúc bạn xem phim vui vẻ ^^`,
+            `Chào mừng đến với ThanhNguyen ! Chúc bạn xem phim vui vẻ ^^`,
             {
                 position: "top-right",
                 autoClose: 3000,
