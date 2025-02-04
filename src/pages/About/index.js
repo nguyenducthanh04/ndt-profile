@@ -69,20 +69,16 @@ export default function EditButton() {
                                         style={{ backgroundColor: "#f8f9fa" }}
                                     >
                                         <MDBCardText className="font-italic mb-1">
-                                            Chào mọi người, mình có sở thích là
-                                            xem phim, đặc biệt là các bộ anime
-                                            cho nên mình đã rành thời gian rảnh
-                                            tự code ra cho bản thân một trang
-                                            web để xem phim giải trí.
+                                            Chào mọi người, đây là website xem phim mình tự tay code ra. Mọi người xem phim vui vẻ. Hết!
                                         </MDBCardText>
-                                        <MDBCardText className="font-italic mb-1">
+                                        {/* <MDBCardText className="font-italic mb-1">
                                             Trang web này có gần như đầy đủ các
                                             bộ phim và được cập nhật liên tục.
                                         </MDBCardText>
                                         <MDBCardText className="font-italic mb-0">
                                             Mình chỉ muốn nói vậy thôi á ^^.
                                             Chúc mọi người xem phim vuii vẻ 😘😘
-                                        </MDBCardText>
+                                        </MDBCardText> */}
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center mb-4">
