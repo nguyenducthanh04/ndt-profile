@@ -72,7 +72,7 @@ export default function EditButton() {
                                             Chào mọi người, đây là website xem phim mình tự tay code ra. Mọi người xem phim vui vẻ. Hết!
                                         </MDBCardText>
                                         <MDBCardText className="font-italic mb-1">
-                                           Góp ý vui lòng liên hê: <a href="https://www.facebook.com/profile.php?id=100029011241481&locale=vi_VN">https://www.facebook.com/profile.php?id=100029011241481&locale=vi_VN</a>
+                                           Góp ý vui lòng liên hệ: <a href="https://www.facebook.com/profile.php?id=100029011241481&locale=vi_VN">https://www.facebook.com/profile.php?id=100029011241481&locale=vi_VN</a>
                                         </MDBCardText>
                                         {/* <MDBCardText className="font-italic mb-0">
                                             Mình chỉ muốn nói vậy thôi á ^^.
