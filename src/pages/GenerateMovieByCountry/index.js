@@ -1,23 +1,25 @@
-
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import axios from "axios";
 import styles from "./GenerateMovieByCountry.module.scss";
-import { useLocation, Link } from "react-router-dom";
-import ImageNoData from "../../assets/images/emiuuuu.jpg"
-import Loading from "../../assets/images/vn-flag-full.gif"
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import ImageNoData from "../../assets/images/emiuuuu.jpg";
+import Loading from "../../assets/images/vn-flag-full.gif";
 import { FaCheckCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const cx = classNames.bind(styles);
 
 function GenerateMovieByCountry() {
     const location = useLocation();
+    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
     const keyword = searchParams.get("keyword");
+    const pageFromUrl = parseInt(searchParams.get("page")) || 1; // Lấy page từ URL
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(pageFromUrl); // Khởi tạo từ URL
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
@@ -33,11 +35,15 @@ function GenerateMovieByCountry() {
             }
         };
 
-        fetchMovies(currentPage);
-    }, [currentPage, keyword]);
+        // Đồng bộ currentPage với pageFromUrl khi keyword hoặc pageFromUrl thay đổi
+        setCurrentPage(pageFromUrl);
+        fetchMovies(pageFromUrl);
+    }, [keyword, pageFromUrl]); // Chạy khi keyword hoặc pageFromUrl thay đổi
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
+        // Cập nhật URL khi chuyển trang
+        navigate(`/quoc-gia?keyword=${encodeURIComponent(keyword)}&page=${page}`);
         toast.success(`Bạn đã chuyển sang trang ${page}`, {
             icon: <FaCheckCircle style={{ color: "green" }} />,
         });
@@ -46,7 +52,6 @@ function GenerateMovieByCountry() {
     const renderPagination = () => {
         const pages = [];
 
-        // Prev button
         if (currentPage > 1) {
             pages.push(
                 <button
@@ -59,7 +64,6 @@ function GenerateMovieByCountry() {
             );
         }
 
-        // Page numbers
         if (currentPage > 1) {
             pages.push(
                 <button
@@ -116,7 +120,6 @@ function GenerateMovieByCountry() {
             );
         }
 
-        // Next button
         if (currentPage < totalPages) {
             pages.push(
                 <button
@@ -131,9 +134,12 @@ function GenerateMovieByCountry() {
 
         return pages;
     };
+
     return (
         <div className={cx("content-anime")}>
-            <h1>Danh sách phim: <em style={{color: "green"}}>{keyword}</em></h1>
+            <h1>
+                Danh sách phim: <em style={{ color: "green" }}>{keyword}</em>
+            </h1>
             <div className={cx("movie-list")}>
                 {movies?.map((movie) => (
                     <Link to={`/detail/${movie.slug}`}>
