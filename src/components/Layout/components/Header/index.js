@@ -21,16 +21,14 @@ function Header() {
     useEffect(() => {
         const fetchCountries = async () => {
           try {
-            // Gọi API bằng Axios
-            const response = await axios.get('https://phimapi.com/quoc-gia'); // Thay bằng URL API của bạn
-            // Sắp xếp danh sách quốc gia theo tên
+            const response = await axios.get('https://phimapi.com/quoc-gia'); 
             const sortedCountries = response.data
               .map((country) => ({
                 id: country._id,
                 name: country.name,
                 slug: country.slug,
               }))
-              .sort((a, b) => a.name.localeCompare(b.name)); // Sắp xếp theo alphabet
+              .sort((a, b) => a.name.localeCompare(b.name)); 
             setCountries(sortedCountries);
             console.log("nuoc:",countries)
           } catch (err) {
@@ -39,12 +37,12 @@ function Header() {
         };
     
         fetchCountries();
-      }, []); // Chỉ gọi API
+      }, []); 
     const handleSearch = () => {
         navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
     };
     const handleGenerateMovieByCountry = (countryName) => {
-        navigate(`/quoc-gia?keyword=${encodeURIComponent(countryName)}`)
+        navigate(`/quoc-gia?keyword=${encodeURIComponent(countryName)}&page=1`)
         console.log("okkk")
     }
     const handleKeyDown = (e) => {
@@ -189,8 +187,8 @@ function Header() {
                     style={{ marginLeft: "10px", padding: "8px" }}
                     onClick={() => {
                         handleGenerateMovieByCountry(country.slug);
-                        setIsMobileDropdownOpen(false); // đóng sau khi chọn
-                        setIsMenuOpen(false); // đóng menu mobile
+                        setIsMobileDropdownOpen(false); 
+                        setIsMenuOpen(false); 
                     }}
                 >
                     {country.name}
