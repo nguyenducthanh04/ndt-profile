@@ -65,10 +65,11 @@ function Home() {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    "https://phimapi.com/danh-sach/phim-moi-cap-nhat"
+                    "https://phimapi.com/danh-sach/phim-moi-cap-nhat-v3"
                 );
                 const result = await response.json();
                 setBanner(result.items);
+                console.log("banner:", banner)
             } catch (error) {
                 console.error("Lỗi khi fetch dữ liệu:", error);
             }
@@ -78,7 +79,7 @@ function Home() {
     }, []);
     useEffect(() => {
         toast.success(
-            `Chào mừng đến với ThanhNguyen ! Chúc bạn xem phim vui vẻ ^^`,
+            `Hoàng Sa và Trường Sa là của Việt Nam`,
             {
                 position: "top-right",
                 autoClose: 3000,
@@ -90,25 +91,67 @@ function Home() {
             }
         );
     }, []);
-
+    const hello = () => {
+        toast.success(
+            `Bạn chào mình à, xin chào bạn nhaaaaa`,
+            {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }
+        );
+    }
     if (error) {
         return <div>Error: {error.message}</div>;
     }
     return (
         <div className={cx("home-content")}>
-            <Carousel data-bs-theme="dark">
-                {banner?.map((bn) => (
-                    <Carousel.Item>
-                        <Link to={`/detail/${bn.slug}`}>
-                            <img
-                                className="d-block w-100"
-                                src={bn.poster_url}
-                                alt={bn.name}
-                            />
-                        </Link>
-                    </Carousel.Item>
-                ))}
-            </Carousel>
+            <Carousel data-bs-theme="dark" indicators={false} controls={true}>
+  {banner?.map((bn) => (
+    <Carousel.Item key={bn._id}>
+      <div className={cx("banner-slide")}>
+        <img
+          className={cx("banner-img")}
+          src={bn.poster_url}
+          alt={bn.name}
+        />
+
+        <div className={cx("banner-content")}>
+          <h2>{bn.name}</h2>
+          <div className={cx("tags")}>
+            <span>{bn.year}</span>
+            <span>{bn.time}</span>
+            <span>{bn.origin_name}</span>
+          </div>
+          <div className={cx("genres")}>
+            {bn.category?.map((ctg) => (
+            <span>{ctg.name}</span>
+            ))}
+          </div>
+          <div className={cx("tags")}>
+            <span>{bn.episode_current}</span>
+            <span>{bn.quality}</span>
+            <span>{bn.lang}</span>
+          </div>
+          <div className={cx("buttons")}>
+          <Link to={`/watch-movie/${bn.slug}`}>
+            <button className={cx("play-btn")}>▶</button>
+            </Link>
+            <button onClick={hello}>Hi😁</button>
+            <Link to={`/detail/${bn.slug}`}>
+            <button>ℹ</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </Carousel.Item>
+  ))}
+</Carousel>
+
             <div className={cx("content-movie")}>
                 <div style={{ display: "flex" }}>
                     <h2>Phim lẻ</h2>

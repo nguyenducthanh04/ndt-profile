@@ -1,18 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
+import axios from "axios";
+import Tippy from '@tippyjs/react/headless'; 
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+import { FaSearch, FaBars, FaTimes, FaCaretDown } from "react-icons/fa";
 
 const cx = classNames.bind(styles);
 
 function Header() {
+    const [countries, setCountries] = useState([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [keyword, setKeyword] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+    const [isVisibleAccount, setIsVisibleAccount] = useState(false)
+    const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    useEffect(() => {
+        const fetchCountries = async () => {
+          try {
+            // Gọi API bằng Axios
+            const response = await axios.get('https://phimapi.com/quoc-gia'); // Thay bằng URL API của bạn
+            // Sắp xếp danh sách quốc gia theo tên
+            const sortedCountries = response.data
+              .map((country) => ({
+                id: country._id,
+                name: country.name,
+                slug: country.slug,
+              }))
+              .sort((a, b) => a.name.localeCompare(b.name)); // Sắp xếp theo alphabet
+            setCountries(sortedCountries);
+            console.log("nuoc:",countries)
+          } catch (err) {
+            setError(err.message || 'Không thể lấy dữ liệu quốc gia');
+          } 
+        };
+    
+        fetchCountries();
+      }, []); // Chỉ gọi API
     const handleSearch = () => {
         navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
     };
+    const handleGenerateMovieByCountry = (countryName) => {
+        navigate(`/quoc-gia?keyword=${encodeURIComponent(countryName)}`)
+        console.log("okkk")
+    }
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -20,16 +54,22 @@ function Header() {
             setIsMenuOpen(false);
         }
     };
+    const showAccount = () => setIsVisibleAccount(true);
+    const hideAccount = () => setIsVisibleAccount(false);
+    const showCountry = () => setIsMobileDropdownOpen(true);
+    const hideCountry = () => setIsMobileDropdownOpen(false);
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen); 
+      };
     return (
         <div className={cx("wrapper")}>
             <div className={cx("navbar")}>
                 <div className={cx("nav-left")}>
                     <Link to={"/"} className={cx("logo-name")}>
-                    <h2>laviem</h2>
+                    <h2>ThanhNguyen</h2>
                     </Link>
                     <ul>
                         <Link to={"/"} className={cx("link")}>
@@ -50,9 +90,23 @@ function Header() {
                         <Link to={"/saved-movie"} className={cx("link")}>
                             <li>Phim Yêu Thích</li>
                         </Link>
-                        <Link to={"/about"} className={cx("link")}>
+                <Tippy render={(attrs) => (
+                   <div className={cx("country-list")}>
+                    {
+            countries.map((country) => (
+                <h5 key={country.id} style={{marginLeft: "10px", padding: "8px"}} onClick={() => handleGenerateMovieByCountry(country.slug)}>{country.name}</h5>
+            ))
+          }
+                   </div>
+                )} placement="bottom" interactive visible={isVisibleAccount} onClickOutside={hideAccount }>  
+                 <div className={cx("country-btn")}>
+                            <Link className={cx("link")} onClick={isVisibleAccount ? hideAccount : showAccount}>Quốc Gia <FaCaretDown></FaCaretDown></Link>
+                        </div>
+                </Tippy>
+                
+                        {/* <Link to={"/about"} className={cx("link")}>
                             <li>Giới Thiệu</li>
-                        </Link>
+                        </Link> */}
                     </ul>
                 </div>
                 <div className={cx("nav-right")}>
@@ -126,13 +180,38 @@ function Header() {
                         >
                             <li>Phim Yêu Thích</li>
                         </Link>
-                        <Link
-                            to={"/about"}
-                            className={cx("link-mobile")}
-                            onClick={toggleMenu}
-                        >
-                            <li>Giới Thiệu</li>
-                        </Link>
+                        <Tippy
+    render={(attrs) => (
+        <div className={cx("country-list")}>
+            {countries.map((country) => (
+                <h5
+                    key={country.id}
+                    style={{ marginLeft: "10px", padding: "8px" }}
+                    onClick={() => {
+                        handleGenerateMovieByCountry(country.slug);
+                        setIsMobileDropdownOpen(false); // đóng sau khi chọn
+                        setIsMenuOpen(false); // đóng menu mobile
+                    }}
+                >
+                    {country.name}
+                </h5>
+            ))}
+        </div>
+    )}
+    placement="bottom"
+    interactive
+    visible={isMobileDropdownOpen}
+    onClickOutside={hideCountry}
+>
+    <div
+        className={cx("link-mobile")}
+        onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+        style={{ cursor: "pointer" }}
+    >
+        <li>Quốc Gia <FaCaretDown /></li>
+    </div>
+</Tippy>
+
                     </ul>
                 </div>
             )}

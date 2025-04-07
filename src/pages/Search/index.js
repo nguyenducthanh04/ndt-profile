@@ -7,7 +7,7 @@ import { useLocation, Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 import ImageNoData from "../../assets/images/emiuuuu.jpg"
-import Loading from "../../assets/images/loading.gif"
+import Loading from "../../assets/images/vn-flag-full.gif"
 import "react-toastify/dist/ReactToastify.css";
 
 const cx = classNames.bind(styles);
@@ -21,9 +21,8 @@ function Search() {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            // Reset state trước khi fetch dữ liệu mới
             setLoading(true);
-            setMovies([]); // Đảm bảo kết quả cũ không hiển thị
+            setMovies([]); 
 
             try {
                 const response = await axios.get(
@@ -57,9 +56,6 @@ function Search() {
                     <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <h3 style={{color: "red", marginBottom: "50px"}}>Không có kết quả nào khả dụng</h3>
                     </div>
-                    {/* <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <img src={ImageNoData} style={{width: "300px", height: "450px", borderRadius: "6px"}}></img>
-                </div> */}
                 </div>
             ) : (
                 <div className={cx("movie-list")}>

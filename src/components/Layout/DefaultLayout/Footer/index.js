@@ -3,6 +3,7 @@ import styles from "./Footer.module.scss";
 import { Container, Row, Col, Stack, Image, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import LogoThanhNguyen from '../../../../assets/images/emyeuanh.jpg'
+import FlagVN from "../../../../assets/images/flag-vn.jpg"
 const cx = classNames.bind(styles);
 function Footer() {
   return (
@@ -11,6 +12,10 @@ function Footer() {
         <Row className={cx("text-white", "p-4")}>
           <Col className={cx("")}>
             <Stack>
+              <div style={{display: "flex", background: "red", borderRadius: "20px", justifyContent: "center", alignItems: "center", marginBottom: "20px", padding: "0px 10px"}}>
+                <img src={FlagVN} style={{width: "30px", height: "30px", borderRadius: "50%"}}></img>
+                <p style={{margin: "10px 10px"}}>Hoàng Sa và Trường Sa là của Việt Nam!</p>
+              </div>
               <Image
                 src={LogoThanhNguyen}
                 alt="company logo"
@@ -23,7 +28,7 @@ function Footer() {
             </Stack>
           </Col>
           <Col>
-            <h4 style={{color: "#ffbe0b"}}>laviem</h4>
+            <h4 style={{color: "#ffbe0b"}}>ThanhNguyen</h4>
             <p>Phim Lẻ</p>
             <p>Phim Bộ</p>
             <p>Anime</p>

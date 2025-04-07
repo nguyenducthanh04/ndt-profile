@@ -1,8 +1,9 @@
 .wrapper {
     width: 100%;
     height: 70px;
-    background: #0f172a;
+    background: transparent;
     z-index: 2;
+    position: fixed;
 }
 
 .navbar {
@@ -103,7 +104,7 @@
     background: #0f172a;
     padding: 10px 0;
     position: relative;
-    z-index: 1;
+    z-index: 999;
 }
 
 .mobile-menu ul {
@@ -122,6 +123,39 @@
     margin-left: 22px;
     text-decoration: none;
     color: #17c964;
+}
+.country-list {
+  z-index: 1;
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  max-height: 300px; 
+  overflow-y: auto;
+  height: auto;
+  border-radius: 4px;
+  background-color: rgba(15, 17, 26, .95) !important;
+  color: #fff;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+.country-btn {
+  padding: 20px;
+}
+.country-list::-webkit-scrollbar {
+  display: none;
+}
+.country-list h5 {
+  flex: 1 1 45%; /* Mỗi mục chiếm khoảng một nửa chiều rộng của container */
+  margin-left: 10px;
+  padding: 8px;
+  box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng */
+}
+.country-list h5:hover {
+  background-color: #f0f0f0; /* Thay đổi màu nền khi hover */
+  color: #007bff; /* Thay đổi màu chữ khi hover */
+  cursor: pointer; /* Hiển thị con trỏ chuột dạng "pointer" để người dùng biết có thể nhấp */
+  transform: translateX(5px); /* Dịch chuyển nhẹ sang phải khi hover */
 }
 // Media queries cho responsive
 @media (max-width: 1150px) {
@@ -147,3 +181,6 @@
         display: none;
     }
 }
+
+
+
