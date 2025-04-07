@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,6 +16,7 @@ function Home() {
     const [movies, setMovies] = useState([]);
     const [banner, setBanner] = useState([]);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -105,9 +106,17 @@ function Home() {
             }
         );
     }
+    const handlePlayClick = (slug) => {
+        navigate(`/watch-movie/${slug}`);
+    };
+
+    const handleDetailClick = (slug) => {
+        navigate(`/detail/${slug}`);
+    };
     if (error) {
         return <div>Error: {error.message}</div>;
     }
+
     return (
         <div className={cx("home-content")}>
             <Carousel data-bs-theme="dark" indicators={false} controls={true}>
@@ -138,13 +147,13 @@ function Home() {
             <span>{bn.lang}</span>
           </div>
           <div className={cx("buttons")}>
-          <Link to={`/watch-movie/${bn.slug}`}>
-            <button className={cx("play-btn")}>▶</button>
-            </Link>
+            <button className={cx("play-btn")} onClick={() => handlePlayClick(bn.slug)}>
+                ▶
+            </button>
             <button onClick={hello}>Hi😁</button>
-            <Link to={`/detail/${bn.slug}`}>
-            <button>ℹ</button>
-            </Link>
+            <button onClick={() => handleDetailClick(bn.slug)}>
+                ℹ
+            </button>
           </div>
         </div>
       </div>
