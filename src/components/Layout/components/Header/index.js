@@ -67,7 +67,7 @@ function Header() {
             <div className={cx("navbar")}>
                 <div className={cx("nav-left")}>
                     <Link to={"/"} className={cx("logo-name")}>
-                    <h2>ThanhNguyen</h2>
+                    <h2>加班</h2>
                     </Link>
                     <ul>
                         <Link to={"/"} className={cx("link")}>
