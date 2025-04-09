@@ -2,8 +2,12 @@
     width: 100%;
     height: 70px;
     background: transparent;
-    z-index: 2;
+    z-index: 3;
     position: fixed;
+    transition: background 0.3s ease; 
+    &.scrolled {
+        background: #1a1a1a; 
+    }
 }
 
 .navbar {
@@ -24,6 +28,7 @@
 .nav-left h2 {
     color: #ffbe0b;
     font-weight: bold;
+    margin: 0px;
 }
 .nav-right {
     display: flex;
@@ -101,7 +106,7 @@
 
 .mobile-menu {
     display: none;
-    background: #0f172a;
+    background: #1a1a1a;
     padding: 10px 0;
     position: relative;
     z-index: 999;
@@ -174,12 +179,16 @@
     .navbar {
         justify-content: space-between;
     }
+    .wrapper {
+        background: #1a1a1a; 
+    }
 }
 
 @media (min-width: 1151px) {
     .mobile-menu {
         display: none;
     }
+   
 }
 
 

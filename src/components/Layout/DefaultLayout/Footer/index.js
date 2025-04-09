@@ -28,7 +28,7 @@ function Footer() {
             </Stack>
           </Col>
           <Col>
-            <h4 style={{color: "#ffbe0b"}}>加班</h4>
+            <h4 style={{color: "#ffbe0b"}}>Tăng Ca</h4>
             <p>Phim Lẻ</p>
             <p>Phim Bộ</p>
             <p>Anime</p>
