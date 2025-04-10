@@ -21,7 +21,7 @@ function WatchMovie() {
             .then((response) => {
                 const movieData = response.data;
                 setMovieCurrent(movieData);
-
+                console.log("check mov detail:", movieData)
                 // Kiểm tra nếu có episodes và server_data
                 if (movieData.episodes && movieData.episodes.length > 0) {
                     const firstServerEpisodes = movieData.episodes[0]?.server_data || [];

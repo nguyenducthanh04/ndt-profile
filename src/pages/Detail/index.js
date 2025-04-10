@@ -82,32 +82,53 @@ function Detail() {
       };
     return (
         <div className={cx("container")}>
-            <div className={cx("row")}>
-        <div className={cx("col-md-6")}>
+            <div className={cx("detail-banner")}>
                     <img
                         src={movie.thumb_url}
                         alt={movie.name}
+                        className={cx("detail-banner-img")}
+                    />
+            </div>
+            <div className={cx("row")}>
+        <div className={cx("col-md-4")}>
+                    <img
+                        src={movie.poster_url}
+                        alt={movie.name}
                         className={cx("poster-img")}
                     />
-                    <h4 style={{ marginTop: "20px", marginBottom: "10px" }}>{movie.name}</h4>
+                    <h2 style={{ marginTop: "20px", marginBottom: "10px" }}>{movie.name}</h2>
+                    <h5 style={{ marginTop: "20px", marginBottom: "10px" }}>{movie.origin_name}</h5>
+                    <div className={cx("btn-mobile-display")}>
                     <Link
                         className={cx("play")}
                         to={`/watch-movie/${movie.slug}`}
                     >
-                        <button className={cx("btn-play")}>Xem phim</button>
+                        <button className={cx("btn-play")}>Xem Ngay</button>
                     </Link>
-                    <button
+                   <div className={cx("display-btn-2")}>
+                   <button
                         className={cx("btn-save")}
                         onClick={handleSaveMovie}
                     >
-                        {isSaved ? "💔 Bỏ yêu thích" : "❤️ Yêu thích"}
+                        {isSaved ? "💔" : "❤️"}
                     </button>
                     <button className={cx("btn-share")} onClick={shareOnFacebook}>
                         <FaPaperPlane style={{color: "white"}}/>
                     </button>
+                   </div>
+                    </div>
+                    <div className={cx("tags")}>
+                        <span>{movie.year}</span>
+                        <span>{movie.episode_current}</span>
+                    </div>
+                    <div className={cx("genres")}>
+                        {movie.category?.map((ctg) => (
+                        <span>{ctg.name}</span>
+                    ))}
+                    </div>
                     <br></br>
                     {embedUrl !== "" ? (
-                        <div style={{marginTop: "30px"}}>
+                        <div style={{marginTop: "10px"}}>
                         <h3 style={{color: "#ffbe0b", marginBottom: "20px"}}>Trailer</h3>
                         <iframe 
                          width="248" 
@@ -121,33 +142,32 @@ function Detail() {
                     </div>
                     ) : ""}
                 </div>
-                <div className={cx("col-md-6")}>
-                    <h2>Nội dung</h2>
-                    <p>{movie.content}</p>
-                    <h2>Năm phát hành</h2>
-                    <p>{movie.year}</p>
-                    <h2>Quốc gia</h2>
-                    {movie.country?.map((c) => (
-                        <p>{c.name}</p>
+                <div className={cx("col-md-8")}>
+                <div className={cx("btn-desktop-display")}>
+                <Link
+                        className={cx("play")}
+                        to={`/watch-movie/${movie.slug}`}
+                    >
+                        <button className={cx("btn-play")}>Xem Ngay</button>
+                    </Link>
+                    <button
+                        className={cx("btn-save")}
+                        onClick={handleSaveMovie}
+                    >
+                        {isSaved ? "💔" : "❤️"}
+                    </button>
+                    <button className={cx("btn-share")} onClick={shareOnFacebook}>
+                        <FaPaperPlane style={{color: "white"}}/>
+                    </button>
+                </div>
+                <h4 style={{marginTop: "40px"}}>Giới thiệu:</h4>
+                    <p style={{width: "", color: "#AAAAAA", fontSize: "14px"}}>{movie.content}</p>
+                    <h4 style={{marginTop: "20px"}}>Thời lượng: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{movie.time}</span></h4>
+                    <h4 style={{marginTop: "20px"}}>Quốc gia: {movie.country?.map((c) => (
+                         <span style={{color: "#AAAAAA", fontSize: "14px"}}>{c.name}</span>
                     ))}
-                    <h2>Thời lượng</h2>
-                    <p>{movie.time}</p>
-                    <h2>Số tập phim</h2>
-                    <p>{movie.episode_total} tập</p>
-                    <h2>Đã phát</h2>
-                    <p>{movie.episode_current}</p>
-                    <h2>Diễn viên</h2>
-                        <p>{convertListActor}</p>
-                    <h2>Chất lượng</h2>
-                        <p>{movie.quality}</p>
-                    <h2>Phụ đề</h2>
-                        <p>{movie.lang}</p>
-                    <h2>Thể loại</h2>
-                    <ul>
-                        {movie.category?.map((cate) => (
-                            <li>{cate.name}</li>
-                        ))}
-                    </ul>
+                    </h4>
+                    <h4 style={{width: "", marginTop: "20px"}}>Diễn viên: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{convertListActor}</span></h4>
                 </div>
             </div>
             <ToastContainer
