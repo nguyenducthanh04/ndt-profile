@@ -74,6 +74,8 @@ function Detail() {
     const embedUrl = trailerUrl ? trailerUrl.replace("watch?v=", "embed/") : "";
     const listActor = movie.actor;
     const convertListActor = listActor ? listActor.join(", ") : "";
+    const listCountry = movie.country;
+    const convertListCountry = listCountry ? listCountry.join(", ") : "";
     const shareOnFacebook = () => {
         const movieUrl = `https://ndthah.vercel.app/detail/${slug}`;
         const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(movieUrl)}`;
@@ -164,7 +166,7 @@ function Detail() {
                     <p style={{width: "", color: "#AAAAAA", fontSize: "14px"}}>{movie.content}</p>
                     <h4 style={{marginTop: "20px"}}>Thời lượng: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{movie.time}</span></h4>
                     <h4 style={{marginTop: "20px"}}>Quốc gia: {movie.country?.map((c) => (
-                         <span style={{color: "#AAAAAA", fontSize: "14px"}}>{c.name}</span>
+                         <span style={{color: "#AAAAAA", fontSize: "14px"}}>{c.name}_ </span>
                     ))}
                     </h4>
                     <h4 style={{width: "", marginTop: "20px"}}>Diễn viên: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{convertListActor}</span></h4>

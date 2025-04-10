@@ -14,6 +14,7 @@ function Home() {
     const [movieOdd, setMovieOdd] = useState([]);
     const [anime, setAnime] = useState([]);
     const [movies, setMovies] = useState([]);
+    const [horrifieds, setHorrifieds] = useState([]);
     const [banner, setBanner] = useState([]);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -40,6 +41,21 @@ function Home() {
                 );
                 const result = await response.json();
                 setAnime(result.data.items);
+            } catch (error) {
+                console.error("Lỗi khi fetch dữ liệu:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    "https://phimapi.com/v1/api/the-loai/kinh-di"
+                );
+                const result = await response.json();
+                setHorrifieds(result.data.items);
             } catch (error) {
                 console.error("Lỗi khi fetch dữ liệu:", error);
             }
@@ -231,6 +247,32 @@ function Home() {
                 </div>
                 <div className={cx("list-movie")}>
                     {movies.map((movie) => {
+                        return (
+                            <Link to={`/detail/${movie.slug}`}>
+                                <div
+                                    className={cx("product-item")}
+                                    key={movie._id}
+                                >
+                                    <img
+                                        className={cx("img-product")}
+                                        src={`https://img.phimapi.com/${movie.poster_url}`}
+                                        alt={movie.name}
+                                    />
+                                    <h3 className={cx("name-product")}>
+                                        {movie.name}
+                                    </h3>
+                                </div>
+                            </Link>
+                        );
+                    })}
+                </div>
+            </div>
+            <div className={cx("content-movie")}>
+                <div style={{ display: "flex" }}>
+                    <h2>Anh sợ con người em rồi đó, nhưng không bằng sợ ma</h2>
+                </div>
+                <div className={cx("list-movie")}>
+                    {horrifieds.map((movie) => {
                         return (
                             <Link to={`/detail/${movie.slug}`}>
                                 <div

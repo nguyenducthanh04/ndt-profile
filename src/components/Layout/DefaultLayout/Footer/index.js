@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
 import { Container, Row, Col, Stack, Image, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
-import LogoThanhNguyen from '../../../../assets/images/emyeuanh.jpg'
+import LogoThanhNguyen from '../../../../assets/images/MAP.jpg'
 import FlagVN from "../../../../assets/images/flag-vn.jpg"
 const cx = classNames.bind(styles);
 function Footer() {
