@@ -125,7 +125,7 @@ function Home() {
       <div className={cx("banner-slide")}>
         <img
           className={cx("banner-img")}
-          src={bn.poster_url}
+          src={bn.thumb_url}
           alt={bn.name}
         />
 

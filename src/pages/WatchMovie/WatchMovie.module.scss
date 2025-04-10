@@ -10,9 +10,12 @@
 }
 .name-movie h3 {
     font-size: 2rem;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    color: #ffbe0b;
 }
 .list-episodes {
-    margin-left: 20px;
+    margin-left: 30px;
 }
 .list-episodes button {
     width: 90px;
@@ -25,9 +28,48 @@
 .selectedButton {
     color: red;
 }
+.col-md-4 {
+    padding: 40px;
+    display: flex;
+}
+.image_poster_watch {
+    margin-right: 30px;
+}
+.tags,
+.genres {
+    margin-top: 10px;
+
+    span {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 10px;
+      border-radius: 5px;
+      margin-right: 6px;
+      font-size: 12px;
+    }
+  }
+.poster-img {
+    width: 100px;
+    height: 150px;
+    border-radius: 8px;    
+}
 @media (width: 428px) {
     .name-movie {
         margin-bottom: 20px;
         margin-left: 28px;
+    }
+    .col-md-4 {
+        padding: 0px;
+    }
+    
+}
+@media (max-width: 768px) {
+    .col-md-4 {
+        padding: 25px;
+    }
+    .image_poster_watch {
+        margin-right: 10px;
+    }
+    .genres {
+        display: none;
     }
 }

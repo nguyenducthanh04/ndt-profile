@@ -168,6 +168,8 @@ function Detail() {
                     ))}
                     </h4>
                     <h4 style={{width: "", marginTop: "20px"}}>Diễn viên: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{convertListActor}</span></h4>
+                    <h4 style={{width: "", marginTop: "20px"}}>Đạo diễn: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{movie.director}</span></h4>
+                    <h4 style={{width: "", marginTop: "20px"}}>Phụ đề: <span style={{color: "#AAAAAA", fontSize: "14px"}}>{movie.lang}</span></h4>
                 </div>
             </div>
             <ToastContainer
