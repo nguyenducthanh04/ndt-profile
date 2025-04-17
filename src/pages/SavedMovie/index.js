@@ -46,7 +46,7 @@ function SavedMovie() {
                         >
                             <img
                                 className={cx("img-product")}
-                                src={movie.thumb_url}
+                                src={movie.poster_url}
                                 alt={movie.name}
                             />
                             <h3 className={cx("name-product")}>{movie.name}</h3>

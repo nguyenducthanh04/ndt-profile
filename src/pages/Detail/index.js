@@ -86,7 +86,7 @@ function Detail() {
         <div className={cx("container")}>
             <div className={cx("detail-banner")}>
                     <img
-                        src={movie.thumb_url}
+                        src={movie.thumb_url ? movie.thumb_url : movie.poster_url}
                         alt={movie.name}
                         className={cx("detail-banner-img")}
                     />
