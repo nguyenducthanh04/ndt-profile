@@ -8,15 +8,13 @@ const FacebookComment = ({ url }) => {
   }, [url]);
   const wrapperStyle = {
     marginTop: "40px",
-    marginLeft: "10px", // 👈 Thêm
-    marginRight: "10px", // 👈 Thêm
     padding: "16px",
     backgroundColor: "#f9f9f9",
     borderRadius: "12px",
     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
     maxWidth: "100%",
     overflowX: "auto",
-    width: "calc(100% - 20px)", // 👈 Trừ ra để khớp khi thêm margin
+    width: "100%",
     boxSizing: "border-box",
   };
   
