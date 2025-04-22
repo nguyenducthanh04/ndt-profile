@@ -14,7 +14,7 @@ const FacebookComment = ({ url }) => {
     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
     maxWidth: "100%",
     overflowX: "auto",
-    width: "100%",
+    width: "80%",
     boxSizing: "border-box",
   };
   
